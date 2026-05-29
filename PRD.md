@@ -66,13 +66,21 @@ Two layers, both shipped as CSS variables:
 
 A **brand/theme** remaps which base tokens the aliases resolve to, and may extend base (e.g. add an accent ramp) or **override the grayscale ramp**. By default a brand **inherits the base grayscale**.
 
-### Theme object
+### Theme object — full 7 axes
+
+A `Theme` is a Zod-validated object carrying **all seven axes**: color (`light`/`dark` alias
+maps), grayscale (ramp override), radius, font (sans/serif/mono), logo (`{light,dark}`), symbol
+(`{light,dark}`), and pattern (discriminated union: `grid`/`dots`/`noise`/`mesh` + opacity, or
+`none`). Every axis except `name`/`label` is optional and falls back to base.
 
 ```ts
 export const mind: Theme = {
   name: 'mind',
+  label: 'Mind',
   light: { /* alias overrides for light mode */ },
   dark:  { /* alias overrides for dark mode  */ },
+  radius: '0.625rem',
+  // optional: grayscale, font, logo, symbol, pattern
 };
 ```
 
@@ -178,6 +186,6 @@ ui/
 1. **Demo brand identities** — real names + token values for the warm/rounded and cool/sharp demos. *(TBD at M1.)*
 2. **`b1aKNEsKI` preset contents** — confirm it defines a full light+dark OKLCH token set before seeding base. *(Verify at M0.)*
 3. **Per-component subpath exports** — barrel-only for v1; revisit if tree-shaking needs it.
-4. **Derivation helper** — optional build-time object→`Theme` sugar. *(Deferred; explicit authoring for v1.)*
+4. **Theme axes — RESOLVED:** v1 carries the full 7 axes (color, grayscale, radius, font, logo, symbol, pattern). A build-time object→`Theme` derivation helper remains deferred; explicit light/dark authoring for v1.
 5. **Visual regression** — Chromatic vs Playwright screenshots. *(Deferred; revisit if drift hurts.)*
 6. **Versioning cutover** — 1.0 after first consumer dogfoods (M4).

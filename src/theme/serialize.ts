@@ -1,0 +1,133 @@
+/*
+ * Shared CSS serialization + variable resolution. Used by the static-CSS
+ * generator (`scripts/gen-styles.ts`), the runtime injector (`inject.ts`), and
+ * the contrast resolver (`contrast.ts`) so they always agree on the math.
+ */
+
+import { ALIAS_TOKENS, type AliasMap } from "../tokens/aliases";
+import { basePrimitiveVars, type GrayStep } from "../tokens/base";
+import type { Theme } from "./schema";
+
+export type Mode = "light" | "dark";
+
+/** Render a `{ "--name": "value" }` map as indented CSS declarations. */
+export function cssDeclarations(vars: Record<string, string>, indent = "  "): string {
+  return Object.entries(vars)
+    .map(([name, value]) => `${indent}${name}: ${value};`)
+    .join("\n");
+}
+
+/** Resolve a `var(--x)` reference chain against a flat variable map. */
+export function resolveVarRef(value: string, vars: Record<string, string>, depth = 0): string {
+  const m = /^var\(\s*(--[a-z0-9-]+)\s*\)$/i.exec(value.trim());
+  if (!m || !m[1] || depth > 16) return value;
+  const next = vars[m[1]];
+  if (next === undefined) return value;
+  return resolveVarRef(next, vars, depth + 1);
+}
+
+/** Alias map → `{ "--token": value }`. */
+export function aliasVars(map: AliasMap): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const token of ALIAS_TOKENS) {
+    const value = map[token];
+    if (value !== undefined) out[`--${token}`] = value;
+  }
+  return out;
+}
+
+/** Mode-independent vars a theme contributes: grayscale ramp, radius, fonts. */
+export function themeBaseVars(theme: Theme): Record<string, string> {
+  const out: Record<string, string> = {};
+  if (theme.grayscale) {
+    for (const [step, value] of Object.entries(theme.grayscale)) {
+      if (value !== undefined) out[`--mind-gray-${step}`] = value;
+    }
+  }
+  if (theme.radius) out["--mind-radius"] = theme.radius;
+  if (theme.font?.sans) out["--mind-font-sans"] = theme.font.sans;
+  if (theme.font?.serif) out["--mind-font-serif"] = theme.font.serif;
+  if (theme.font?.mono) out["--mind-font-mono"] = theme.font.mono;
+  return out;
+}
+
+const escapeAttr = (value: string) => value.replace(/["\\]/g, "\\$&");
+
+/**
+ * Emit a theme as scoped CSS keyed by `[data-mind-theme]`. BOTH modes are
+ * always emitted so the active one is selected purely by the `.dark` class —
+ * the brand stays painted even across an SSR→client mode flip.
+ */
+export function emitScopedCss(theme: Theme): string {
+  const sel = `[data-mind-theme="${escapeAttr(theme.name)}"]`;
+  const blocks: string[] = [];
+
+  const base = { ...themeBaseVars(theme), ...aliasVars(theme.light ?? {}) };
+  if (Object.keys(base).length > 0) {
+    blocks.push(`${sel} {\n${cssDeclarations(base)}\n}`);
+  }
+
+  const dark = aliasVars(theme.dark ?? {});
+  if (Object.keys(dark).length > 0) {
+    blocks.push(`${sel}.dark {\n${cssDeclarations(dark)}\n}`);
+  }
+
+  return blocks.join("\n\n");
+}
+
+/**
+ * Emit a complete theme (Mind default) as the unscoped `:root` / `.dark` base,
+ * plus the `--mind-*` primitives and the Tailwind `@theme inline` mapping that
+ * lets shadcn utilities (`bg-background`, `rounded-lg`, …) resolve.
+ */
+export function emitRootCss(theme: Theme): string {
+  const root = {
+    ...basePrimitiveVars(),
+    ...themeBaseVars(theme),
+    "--radius": "var(--mind-radius)",
+    ...aliasVars(theme.light ?? {}),
+  };
+  const dark = aliasVars(theme.dark ?? {});
+
+  return [
+    `:root {\n${cssDeclarations(root)}\n}`,
+    `.dark {\n${cssDeclarations(dark)}\n}`,
+  ].join("\n\n");
+}
+
+/** The Tailwind v4 `@theme inline` block + dark variant. */
+export function emitThemeInline(): string {
+  const colorLines = ALIAS_TOKENS.map((t) => `  --color-${t}: var(--${t});`).join("\n");
+  return `@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+${colorLines}
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--mind-font-sans);
+  --font-serif: var(--mind-font-serif);
+  --font-mono: var(--mind-font-mono);
+}`;
+}
+
+/**
+ * Resolve every alias of `theme` (layered over `defaults`) for `mode` into a
+ * literal color, following `var(--mind-*)` references through the (possibly
+ * brand-overridden) primitive ramp. Used by the contrast gate.
+ */
+export function resolveAliases(
+  theme: Theme,
+  defaults: { light: AliasMap; dark: AliasMap },
+  mode: Mode,
+): Record<string, string> {
+  const primitives = basePrimitiveVars(theme.grayscale as Partial<Record<GrayStep, string>>);
+  const merged: AliasMap = { ...defaults[mode], ...(theme[mode] ?? {}) };
+  const out: Record<string, string> = {};
+  for (const token of ALIAS_TOKENS) {
+    const raw = merged[token];
+    if (raw !== undefined) out[token] = resolveVarRef(raw, primitives);
+  }
+  return out;
+}

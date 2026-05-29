@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "../styles.css";
+
+@source "../src";
+@source "../stories";
+@source "../.storybook";
+
+/* Paint the preview iframe itself with the active theme so the whole canvas
+   (not just the story wrapper) follows light/dark. */
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
