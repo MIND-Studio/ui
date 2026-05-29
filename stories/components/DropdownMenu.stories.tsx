@@ -22,7 +22,7 @@ import {
 } from "../../src/components/dropdown-menu";
 
 const meta = {
-  title: "Components/DropdownMenu",
+  title: "Components/Overlays/DropdownMenu",
   component: DropdownMenu,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

@@ -44,8 +44,12 @@ pnpm build-storybook
 
 ## Conventions
 
-- **Pristine vendoring.** Vendor shadcn primitives with ~zero edits (only the `cn` import path
-  → `../lib/cn`). Re-export from `src/index.ts`. Fork only when a need can't be tokenized.
+- **Pristine vendoring.** Vendor shadcn primitives with ~zero edits (only import-path rewrites:
+  `cn` → `../lib/cn`, sibling components → `./<name>`, hooks → `../hooks/<name>`). Re-export from
+  `src/index.ts`. Fork only when a need can't be tokenized. **The complete shadcn registry is
+  vendored (all 56 `registry:ui` components, sourced from `new-york-v4`).** The original 13
+  import individual `@radix-ui/react-*` packages; components added in the full sweep keep
+  shadcn's current canonical import of the unified `radix-ui` package — both are intentional.
 - **Accessibility is a hard gate.** `tests/contrast.test.ts` enforces WCAG AA (≥4.5:1) on every
   required pair across all built-in themes × light/dark. Component/story render tests run axe
   (`src/test/axe.ts`) — axe's `color-contrast` rule is disabled there (no layout in happy-dom);
@@ -58,7 +62,8 @@ pnpm build-storybook
 
 ```
 src/
-  components/   vendored shadcn primitives + *.test.tsx
+  components/   vendored shadcn primitives (full registry) + *.test.tsx
+  hooks/        use-mobile (sidebar) and other vendored shadcn hooks
   theme/        schema · serialize · inject · provider · contrast · color
   tokens/       base (--mind-*) · aliases (shadcn names) + CONTRAST_PAIRS
   themes/       mind (default, complete) · ember · arctic · index

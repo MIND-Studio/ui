@@ -12,7 +12,7 @@ import {
 } from "../../src/components/select";
 
 const meta = {
-  title: "Components/Select",
+  title: "Components/Forms/Select",
   component: Select,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

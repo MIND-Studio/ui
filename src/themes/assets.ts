@@ -18,7 +18,7 @@ function symbol(letter: string, bg: string, fg: string, rx: number): string {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="${letter} symbol"><rect width="32" height="32" rx="${rx}" fill="${bg}"/><text x="16" y="23" text-anchor="middle" font-family="ui-sans-serif,system-ui,sans-serif" font-size="19" font-weight="700" fill="${fg}">${letter}</text></svg>`;
 }
 
-const MIND = "#6d5bff";
+const MIND = "#16b88a";
 const EMBER = "#e8693a";
 const ARCTIC = "#2b8fd6";
 

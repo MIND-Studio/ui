@@ -1,26 +1,26 @@
 /*
  * Base layer — brand-agnostic primitives, the single source of truth for the
- * `--mind-*` CSS variables. Seeded from a shadcn/new-york neutral (zinc) ramp
- * in OKLCH. (The `b1aKNEsKI` shadcn preset referenced in the PRD was not
- * available as a file when the base was authored; these are standard neutral
- * OKLCH values and are meant to be tuned, not treated as final.)
+ * `--mind-*` CSS variables. Mind's neutrals are a cool, blue-tinted (navy) ramp
+ * in OKLCH (hue ~248): light end is near-white with a faint cool cast, dark end
+ * lands on the deep navy-black (#0c151d) of the Mind product surface. Values are
+ * tunable — the contrast gate (tests/contrast.test.ts) is the source of truth.
  *
  * Components NEVER reference these directly — only the alias layer does.
  */
 
-/** Neutral grayscale ramp (mode-independent). */
+/** Cool navy-tinted grayscale ramp (mode-independent). */
 export const grayRamp = {
-  50: "oklch(0.985 0 0)",
-  100: "oklch(0.967 0.001 286.375)",
-  200: "oklch(0.92 0.004 286.32)",
-  300: "oklch(0.871 0.006 286.286)",
-  400: "oklch(0.705 0.015 286.067)",
-  500: "oklch(0.552 0.016 285.938)",
-  600: "oklch(0.442 0.017 285.786)",
-  700: "oklch(0.37 0.013 285.805)",
-  800: "oklch(0.274 0.006 286.033)",
-  900: "oklch(0.21 0.006 285.885)",
-  950: "oklch(0.141 0.005 285.823)",
+  50: "oklch(0.985 0.003 248)",
+  100: "oklch(0.967 0.005 248)",
+  200: "oklch(0.922 0.008 248)",
+  300: "oklch(0.871 0.011 248)",
+  400: "oklch(0.704 0.02 248)",
+  500: "oklch(0.554 0.028 248)",
+  600: "oklch(0.44 0.034 248)",
+  700: "oklch(0.372 0.034 250)",
+  800: "oklch(0.27 0.03 250)",
+  900: "oklch(0.219 0.03 250)",
+  950: "oklch(0.191 0.021 246)",
 } as const;
 
 export type GrayStep = keyof typeof grayRamp;

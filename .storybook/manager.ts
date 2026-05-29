@@ -1,5 +1,5 @@
 import { addons } from "storybook/manager-api";
-import { themes } from "storybook/theming";
+import { mindManagerTheme } from "./mind-manager-theme";
 
-// Dark Storybook UI chrome (sidebar, toolbars, docs blocks).
-addons.setConfig({ theme: themes.dark });
+// Storybook chrome is pinned to the Mind brand (dark) — see ./mind-manager-theme.
+addons.setConfig({ theme: mindManagerTheme });

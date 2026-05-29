@@ -75,7 +75,7 @@ export function patternStyle(
       return {
         opacity,
         backgroundImage: `radial-gradient(${color} 1.2px, transparent 1.2px)`,
-        backgroundSize: "16px 16px",
+        backgroundSize: "24px 24px",
       };
     case "mesh":
       return {

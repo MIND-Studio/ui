@@ -3,7 +3,7 @@ import { ArrowRight, Download, Plus, Settings, Trash2 } from "lucide-react";
 import { Button } from "../../src/components/button";
 
 const meta = {
-  title: "Components/Button",
+  title: "Components/Forms/Button",
   component: Button,
   tags: ["autodocs"],
   args: { children: "Button" },

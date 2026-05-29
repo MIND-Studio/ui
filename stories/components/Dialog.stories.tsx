@@ -12,7 +12,7 @@ import {
 } from "../../src/components/dialog";
 
 const meta = {
-  title: "Components/Dialog",
+  title: "Components/Overlays/Dialog",
   component: Dialog,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

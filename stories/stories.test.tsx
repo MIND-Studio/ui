@@ -30,7 +30,13 @@ for (const [path, mod] of Object.entries(storyModules)) {
             { canvasElement: container },
           );
         }
-        await expectNoAxeViolations(container);
+        // A story may opt out of specific axe rules that can't be satisfied in
+        // happy-dom (no layout) or by a pristine primitive — declared via the
+        // Storybook-standard `parameters.a11y.disabledRules`. Each use is
+        // documented in the story with the reason.
+        const disabledRules = (Story as { parameters?: { a11y?: { disabledRules?: string[] } } })
+          .parameters?.a11y?.disabledRules;
+        await expectNoAxeViolations(container, { disabledRules });
       });
     }
   });

@@ -12,7 +12,7 @@ import { Input } from "../../src/components/input";
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Card",
+  title: "Components/Data Display/Card",
   component: Card,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },
