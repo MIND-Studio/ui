@@ -1,0 +1,10 @@
+node_modules
+dist
+storybook-static
+*.tsbuildinfo
+
+# Generated from the typed token source (scripts/gen-styles.ts).
+/styles.css
+
+# Pack artifacts
+*.tgz
