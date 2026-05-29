@@ -104,6 +104,8 @@ export { Slider } from "./components/slider";
 export { Toaster } from "./components/sonner";
 export { Spinner } from "./components/spinner";
 export { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "./components/table";
+export { DataTable, DataTableColumnHeader, DataTablePagination, DataTableViewOptions } from "./components/data-table";
+export type { DataTableProps } from "./components/data-table";
 export { Textarea } from "./components/textarea";
 export { ToggleGroup, ToggleGroupItem } from "./components/toggle-group";
 export { Toggle, toggleVariants } from "./components/toggle";
