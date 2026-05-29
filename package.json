@@ -23,15 +23,16 @@
   },
   "scripts": {
     "gen:css": "tsx scripts/gen-styles.ts",
+    "gen:manifest": "tsx scripts/gen-component-manifest.ts",
     "prebuild": "pnpm gen:css",
     "build": "bunchee",
     "postbuild": "node scripts/copy-styles.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prestorybook": "pnpm gen:css",
+    "prestorybook": "pnpm gen:css && pnpm gen:manifest",
     "storybook": "storybook dev -p 6006",
-    "prebuild-storybook": "pnpm gen:css",
+    "prebuild-storybook": "pnpm gen:css && pnpm gen:manifest",
     "build-storybook": "storybook build"
   },
   "peerDependencies": {

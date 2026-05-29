@@ -22,6 +22,7 @@ const preview: Preview = {
           "Brands",
           "Components",
           [
+            "Introduction",
             "Forms",
             "Buttons & Actions",
             "Overlays",
