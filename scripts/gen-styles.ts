@@ -31,6 +31,19 @@ const css = `/*
 
 ${emitRootCss(mind)}
 
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--border);
+  }
+  *:focus-visible {
+    outline-color: var(--ring);
+  }
+}
+
 ${emitThemeInline()}
 
 ${themesCss(themeList)}
