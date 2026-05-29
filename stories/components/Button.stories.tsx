@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { ArrowRight, Download, Plus, Settings, Trash2 } from "lucide-react";
 import { Button } from "../../src/components/button";
 
 const meta = {
@@ -58,6 +59,48 @@ export const Sizes: Story = {
       </Button>
       <Button {...args} size="lg">
         Large
+      </Button>
+    </div>
+  ),
+};
+
+export const WithIcon: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      <Button {...args}>
+        <Download />
+        Download
+      </Button>
+      <Button {...args} variant="secondary">
+        <Plus />
+        New project
+      </Button>
+      <Button {...args} variant="outline">
+        Continue
+        <ArrowRight />
+      </Button>
+      <Button {...args} variant="destructive">
+        <Trash2 />
+        Delete
+      </Button>
+    </div>
+  ),
+};
+
+export const IconOnly: Story = {
+  render: (args) => (
+    <div className="flex flex-wrap items-center gap-3">
+      <Button {...args} size="icon" aria-label="Settings">
+        <Settings />
+      </Button>
+      <Button {...args} size="icon" variant="secondary" aria-label="Add">
+        <Plus />
+      </Button>
+      <Button {...args} size="icon" variant="outline" aria-label="Download">
+        <Download />
+      </Button>
+      <Button {...args} size="icon" variant="ghost" aria-label="Delete">
+        <Trash2 />
       </Button>
     </div>
   ),
