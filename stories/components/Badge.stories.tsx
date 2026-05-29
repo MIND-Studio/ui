@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import { BadgeCheck, Clock, X } from "lucide-react";
 import { Badge } from "../../src/components/badge";
 
 const meta = {
@@ -24,6 +25,25 @@ export const Variants: Story = {
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="destructive">Destructive</Badge>
       <Badge variant="outline">Outline</Badge>
+    </div>
+  ),
+};
+
+export const WithIcon: Story = {
+  render: () => (
+    <div className="flex flex-wrap items-center gap-2">
+      <Badge>
+        <BadgeCheck />
+        Verified
+      </Badge>
+      <Badge variant="secondary">
+        <Clock />
+        Pending
+      </Badge>
+      <Badge variant="destructive">
+        <X />
+        Failed
+      </Badge>
     </div>
   ),
 };
