@@ -19,12 +19,16 @@ export const withTheme: Decorator = (Story, context) => {
   const theme = themes[brand] ?? themes.mind;
   // Fill the viewport on the Canvas; size to content inside Docs blocks.
   const isDocs = context.viewMode === "docs";
+  // Vendored blocks are full-page compositions that own their own layout and
+  // edge-to-edge padding; the decorator's gutter only suits component examples.
+  const isBlock = context.title?.startsWith("Blocks/");
 
   return (
     <ThemeProvider key={`${brand}:${mode}`} theme={theme} forcedTheme={mode} enableSystem={false}>
       <div
         className={cn(
-          "bg-background text-foreground w-full p-8 font-sans antialiased",
+          "bg-background text-foreground w-full font-sans antialiased",
+          !isBlock && "p-8",
           isDocs ? "min-h-40" : "min-h-svh",
         )}
       >
