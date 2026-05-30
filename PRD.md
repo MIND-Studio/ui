@@ -2,7 +2,7 @@
 
 **Status:** draft v0.1 — 2026-05-29
 **Owner:** Sven
-**Package:** `@mind/ui`
+**Package:** `@mind-studio/ui`
 
 ---
 
@@ -12,7 +12,7 @@ A **shadcn-native, multi-brand design system** for all Mind projects, built on T
 
 ## 2. Goals
 
-- **One package, N brands.** `pnpm add @mind/ui`, wrap the app in `<ThemeProvider>`, get the `Mind` brand by default; switch or inject custom brands at runtime.
+- **One package, N brands.** `pnpm add @mind-studio/ui`, wrap the app in `<ThemeProvider>`, get the `Mind` brand by default; switch or inject custom brands at runtime.
 - **Brand = typed config, not code.** A brand is a Zod-validated TS object. No new components needed to add a brand. Custom themes can live in *other* packages and be injected.
 - **Two clean token layers** (base → alias) with full shadcn variable compatibility, so vendored components stay pristine.
 - **Accessibility is a system property, not a suggestion.** WCAG AA enforced as a hard CI gate (axe + contrast).
@@ -34,7 +34,7 @@ A **shadcn-native, multi-brand design system** for all Mind projects, built on T
 | Persona | Need |
 |---|---|
 | **Sven (system owner)** | Add/tune brands, port components, keep the catalog clean and accessible. |
-| **Project dev (consumer)** | `pnpm add @mind/ui`, pick or inject a brand, build a UI without reinventing primitives. |
+| **Project dev (consumer)** | `pnpm add @mind-studio/ui`, pick or inject a brand, build a UI without reinventing primitives. |
 | **Designer / stakeholder** | Open Storybook, switch brands and modes, inspect tokens, copy a component example. |
 
 ## 5. Architecture decisions (locked)
@@ -42,7 +42,7 @@ A **shadcn-native, multi-brand design system** for all Mind projects, built on T
 | Decision | Choice | Why |
 |---|---|---|
 | Relationship to `facet` | **Fresh rebuild** | facet is dead; no code carried over. Cleaner shadcn-native take. |
-| Distribution | **Published npm package** `@mind/ui` | Single source, versioned releases, `import`-based consumption. Public npm. |
+| Distribution | **Published npm package** `@mind-studio/ui` | Single source, versioned releases, `import`-based consumption. Public npm. |
 | shadcn CLI | **Internal authoring tool only** | Used by the maintainer to vendor primitives; the `b1aKNEsKI` preset seeds the Mind default theme. Consumers never run shadcn. |
 | Repo shape | **Single package + colocated Storybook** | Exactly one shippable artifact. Monorepo only when a 2nd appears. |
 | Framework | **Next-coupled** | `next` is a peer dep; `next/link`/`next/image` used directly. Targets Mind's Next apps. |
@@ -91,13 +91,13 @@ export const mind: Theme = {
 
 ### Delivery
 
-- **Default Mind theme** is emitted as **static CSS** (`@mind/ui/styles.css`), imported in the consumer's `globals.css` — SSR-perfect, zero JS for the common case.
+- **Default Mind theme** is emitted as **static CSS** (`@mind-studio/ui/styles.css`), imported in the consumer's `globals.css` — SSR-perfect, zero JS for the common case.
 - **`<ThemeProvider theme={...}>`** serializes any theme into a scoped `<style>` block (`[data-mind-theme="x"]{…}` + `[data-mind-theme="x"].dark{…}`), so custom themes from other packages inject cleanly and mode is a class flip.
 - The provider wraps `next-themes` (`attribute="class"`) for mode (system detection, persistence, no-flash). Mode = `.dark` on `<html>`; brand = `[data-mind-theme]` on `<html>`.
 
 ## 7. Component scope
 
-- **Strategy:** vendor shadcn primitives with ~zero edits, re-export from `@mind/ui`. All brand variation lives in the token layer. Fork a component only when a real need can't be tokenized.
+- **Strategy:** vendor shadcn primitives with ~zero edits, re-export from `@mind-studio/ui`. All brand variation lives in the token layer. Fork a component only when a real need can't be tokenized.
 - **v1 — curated core** (exercises every token axis: color, radius, font, focus ring, light/dark):
   Button, Input, Label, Card, Badge, Checkbox, Switch, Select, Tabs, Dialog, Tooltip, Separator.
 - Expand toward fuller shadcn parity after the core proves the pipeline end-to-end.

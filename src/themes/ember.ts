@@ -30,5 +30,5 @@ export const ember: Theme = parseTheme(
     symbol: assets.ember.symbol,
     pattern: { kind: "dots", opacity: 0.05 },
   },
-  { source: "@mind/ui/themes/ember" },
+  { source: "@mind-studio/ui/themes/ember" },
 );

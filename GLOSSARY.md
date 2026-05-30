@@ -1,15 +1,15 @@
 # Mind UI — Glossary
 
-The shared vocabulary for `@mind/ui`. Terms are grouped by domain (brand, tokens, theming, distribution, quality). When code, docs, or commits use one of these words, it means *exactly* what's defined here.
+The shared vocabulary for `@mind-studio/ui`. Terms are grouped by domain (brand, tokens, theming, distribution, quality). When code, docs, or commits use one of these words, it means *exactly* what's defined here.
 
 ---
 
 ## Brand & product
 
 **Mind**
-Our core brand name for the open-source community. We attempt to decentralize the web by building applications for people, not profits — data is owned and controlled by everyone autonomously. In `@mind/ui`, **Mind** is also the name of the **default brand/theme**.
+Our core brand name for the open-source community. We attempt to decentralize the web by building applications for people, not profits — data is owned and controlled by everyone autonomously. In `@mind-studio/ui`, **Mind** is also the name of the **default brand/theme**.
 
-**Mind UI** (`@mind/ui`)
+**Mind UI** (`@mind-studio/ui`)
 The core multi-brand design system for all Mind projects. A single published npm package: shadcn-native components, a two-layer token system, a `<ThemeProvider>`, and the built-in brands.
 
 **Brand**
@@ -22,7 +22,7 @@ A visual identity expressed entirely as tokens — never as component code. Ever
 One of the two contrasting example brands (one **warm/rounded**, one **cool/sharp**) bundled to (a) make brand-switching visibly dramatic in Storybook and (b) serve as worked examples a consumer copies when authoring their own theme.
 
 **Consumer**
-A downstream Mind app (Next.js) that runs `pnpm add @mind/ui`, imports components, and either uses the Mind brand or injects a custom theme.
+A downstream Mind app (Next.js) that runs `pnpm add @mind-studio/ui`, imports components, and either uses the Mind brand or injects a custom theme.
 
 ---
 
@@ -63,7 +63,7 @@ The single Mind UI provider component. **Wraps `next-themes`** for mode (system 
 Passing a `Theme` to `<ThemeProvider theme={...}>`. The provider serializes it into a scoped `<style>` block (`[data-mind-theme="x"]{…}` + `[data-mind-theme="x"].dark{…}`), so custom themes from other packages apply at runtime.
 
 **Dual delivery**
-The two ways theme CSS reaches the page: (1) the **default Mind theme as static CSS** (`@mind/ui/styles.css`, SSR-perfect), and (2) **any theme via the ThemeProvider** at runtime. Both coexist.
+The two ways theme CSS reaches the page: (1) the **default Mind theme as static CSS** (`@mind-studio/ui/styles.css`, SSR-perfect), and (2) **any theme via the ThemeProvider** at runtime. Both coexist.
 
 **Mode**
 Light or dark. Implemented as the `.dark` class on `<html>` (shadcn-compatible), managed by `next-themes`. Orthogonal to brand.
@@ -79,10 +79,10 @@ Importing shadcn primitives with ~zero edits and re-exporting them. All brand va
 The v1 component set (Button, Input, Label, Card, Badge, Checkbox, Switch, Select, Tabs, Dialog, Tooltip, Separator) — chosen to exercise every token axis before widening toward shadcn parity.
 
 **Source-scanned delivery**
-How Mind UI's Tailwind utility classes reach a consumer: the package ships transpiled JS with class strings intact, and the consumer's Tailwind v4 config adds `@source` pointing at `@mind/ui`'s `dist`, so *their* build generates the needed utilities. (Contrast: a precompiled CSS bundle, which Mind UI does **not** use for utilities.)
+How Mind UI's Tailwind utility classes reach a consumer: the package ships transpiled JS with class strings intact, and the consumer's Tailwind v4 config adds `@source` pointing at `@mind-studio/ui`'s `dist`, so *their* build generates the needed utilities. (Contrast: a precompiled CSS bundle, which Mind UI does **not** use for utilities.)
 
 **Static token CSS**
-The `@mind/ui/styles.css` artifact carrying base tokens + the Mind default theme (light/dark). Imported by the consumer; protected from tree-shaking via `sideEffects: ["*.css"]`.
+The `@mind-studio/ui/styles.css` artifact carrying base tokens + the Mind default theme (light/dark). Imported by the consumer; protected from tree-shaking via `sideEffects: ["*.css"]`.
 
 **ESM-only**
 The package ships ECMAScript modules exclusively (no CJS). Built with **bunchee**, which preserves `"use client"` directives and reads the `exports` map.

@@ -94,5 +94,5 @@ export const mind: Theme = parseTheme(
     symbol: assets.mind.symbol,
     pattern: { kind: "dots", opacity: 0.06 },
   },
-  { source: "@mind/ui/themes/mind" },
+  { source: "@mind-studio/ui/themes/mind" },
 );
