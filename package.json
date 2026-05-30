@@ -1,9 +1,16 @@
 {
-  "name": "@mind/ui",
-  "version": "0.0.0",
+  "name": "@mind-studio/ui",
+  "version": "0.1.0",
   "description": "Mind UI — a shadcn-native, multi-brand design system for Mind projects.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MIND-Studio/ui.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "sideEffects": [
     "*.css"
   ],

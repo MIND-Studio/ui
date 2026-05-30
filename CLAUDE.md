@@ -1,4 +1,4 @@
-# CLAUDE.md — `@mind/ui`
+# CLAUDE.md — `@mind-studio/ui`
 
 Mind UI is a **shadcn-native, multi-brand design system** for Mind projects: a single
 published npm package of pristine-vendored shadcn components, a two-layer token system, a
@@ -39,7 +39,7 @@ pnpm build-storybook
 - **`<ThemeProvider>`** (`src/theme/provider.tsx`) wraps `next-themes` (`attribute="class"`,
   `.dark` = mode) and injects the active theme's scoped CSS under `[data-mind-theme]`. Both
   modes are always emitted.
-- **Dual delivery.** Mind default ships as static CSS (`@mind/ui/styles.css`, SSR-perfect);
+- **Dual delivery.** Mind default ships as static CSS (`@mind-studio/ui/styles.css`, SSR-perfect);
   any theme injects at runtime via the provider.
 
 ## Conventions

@@ -30,7 +30,7 @@ export const Default: Story = {
         </CollapsibleTrigger>
       </div>
       <div className="rounded-md border px-4 py-2 font-mono text-sm">
-        @mind/ui
+        @mind-studio/ui
       </div>
       <CollapsibleContent className="flex flex-col gap-2">
         <div className="rounded-md border px-4 py-2 font-mono text-sm">

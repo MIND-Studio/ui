@@ -1,4 +1,4 @@
-# Milestones — `@mind/ui`
+# Milestones — `@mind-studio/ui`
 
 Progress log for the build defined in [`../GOAL.md`](../GOAL.md), spec'd in
 [`../PRD.md`](../PRD.md). Each milestone has a verifiable Definition of Done; the table

@@ -38,5 +38,5 @@ export const arctic: Theme = parseTheme(
     symbol: assets.arctic.symbol,
     pattern: { kind: "grid", opacity: 0.04 },
   },
-  { source: "@mind/ui/themes/arctic" },
+  { source: "@mind-studio/ui/themes/arctic" },
 );

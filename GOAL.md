@@ -1,6 +1,6 @@
 # Mind UI — Automode Goal
 
-**Build `@mind/ui` through the full v1 core (M0 → M2)**, following [`PRD.md`](./PRD.md) and the locked decisions in PRD §5. Track terminology against [`GLOSSARY.md`](./GLOSSARY.md) and the build plan in `.claude/plans/i-want-you-to-playful-gizmo.md`.
+**Build `@mind-studio/ui` through the full v1 core (M0 → M2)**, following [`PRD.md`](./PRD.md) and the locked decisions in PRD §5. Track terminology against [`GLOSSARY.md`](./GLOSSARY.md) and the build plan in `.claude/plans/i-want-you-to-playful-gizmo.md`.
 
 ---
 

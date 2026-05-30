@@ -5,7 +5,7 @@ one component rendering live across all brands × modes — the end-to-end pipel
 
 ## Delivered
 
-- **Package + tooling** — `@mind/ui`, ESM, `exports` map (`.`, `./themes`, `./styles.css`),
+- **Package + tooling** — `@mind-studio/ui`, ESM, `exports` map (`.`, `./themes`, `./styles.css`),
   peer deps (`react`/`react-dom`/`next`/`tailwindcss`), `sideEffects: ["*.css"]`. bunchee build,
   strict `tsconfig`, Vitest (happy-dom), Storybook 9 (`@storybook/nextjs-vite`), `components.json`.
 - **Two token layers**
