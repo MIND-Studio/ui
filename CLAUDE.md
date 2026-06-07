@@ -86,3 +86,11 @@ tests/          contrast gate
 > The `b1aKNEsKI` shadcn preset named in the PRD was not available as a file; base tokens were
 > seeded from a standard neutral OKLCH ramp and a Mind indigo. Values are tunable — the contrast
 > gate is the source of truth for "is this accessible."
+
+## Commits & releases
+
+Use [Conventional Commits](https://www.conventionalcommits.org) on `main`
+(`fix:` → patch, `feat:` → minor, `feat!:` / `BREAKING CHANGE:` → major). Releases,
+tags, and `CHANGELOG.md` are automated by **release-please** — never tag manually
+or hand-edit `CHANGELOG.md`. To cut a release, merge the open
+"chore(main): release X.Y.Z" PR. See the README's Releases section.
