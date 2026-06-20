@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import { useMindTheme } from "../theme/provider";
 import type { Pattern as PatternConfig } from "../theme/schema";
+import { patternBackground } from "../theme/serialize";
 import { cn } from "../lib/cn";
 
 /*
@@ -50,41 +51,24 @@ export function Symbol({ className, alt, ...props }: LogoProps) {
   );
 }
 
-const NOISE_SVG =
-  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
-
 /**
  * The CSS for a decorative pattern layer, in the given ink color (default
  * `currentColor`). Returns `undefined` for `kind: "none"`. Exported so consumers
- * can apply a brand pattern anywhere.
+ * can apply a brand pattern anywhere. Shares its geometry with the page-default
+ * emitter via `patternBackground`.
  */
 export function patternStyle(
   pattern: PatternConfig,
   color = "currentColor",
 ): CSSProperties | undefined {
   if (pattern.kind === "none") return undefined;
-  const { opacity } = pattern;
-  switch (pattern.kind) {
-    case "grid":
-      return {
-        opacity,
-        backgroundImage: `linear-gradient(to right, ${color} 1px, transparent 1px), linear-gradient(to bottom, ${color} 1px, transparent 1px)`,
-        backgroundSize: "24px 24px",
-      };
-    case "dots":
-      return {
-        opacity,
-        backgroundImage: `radial-gradient(${color} 1.2px, transparent 1.2px)`,
-        backgroundSize: "24px 24px",
-      };
-    case "mesh":
-      return {
-        opacity,
-        backgroundImage: `radial-gradient(at 20% 20%, ${color} 0, transparent 45%), radial-gradient(at 80% 60%, ${color} 0, transparent 45%)`,
-      };
-    case "noise":
-      return { opacity, backgroundImage: NOISE_SVG };
-  }
+  const bg = patternBackground(pattern, color);
+  if (!bg) return undefined;
+  return {
+    opacity: pattern.opacity,
+    backgroundImage: bg.image,
+    ...(bg.size ? { backgroundSize: bg.size } : {}),
+  };
 }
 
 export type PatternProps = React.HTMLAttributes<HTMLDivElement>;
