@@ -12,4 +12,44 @@ swap any stack; everything else inherits the system defaults.
 Each specimen renders with its live CSS variable, so **changing brand in the toolbar**
 re-paints the page with that brand's chosen stack.
 
+## 🅰️ The three stacks
+
+The raw faces, side by side — a sentence and a glyph set per stack.
+
 <Canvas of={TypographyStories.Typography} />
+
+## 📐 The type scale
+
+The sans stack across the steps a brand actually composes with — from a `text-5xl` display
+down to a `text-xs` caption. One face, asked to hold up from headline to fine print.
+
+<Canvas of={TypographyStories.Scale} />
+
+## ✍️ Serif in its element — an editorial piece
+
+Where the **serif** stack earns its keep: a real article with a headline, a lead, running
+body copy, a pull quote, and lists. This is the stack tuned for prose you linger over rather
+than scan.
+
+<Canvas of={TypographyStories.Editorial} />
+
+## 🧭 Sans for the interface
+
+Most product text is **sans** — glanceable, dense, legible at small sizes and tight
+line-heights. Here it carries a heading, body copy, a definition list, and small print without
+breaking stride.
+
+<Canvas of={TypographyStories.Interface} />
+
+## 💻 Mono for code & data
+
+The **mono** stack is for when alignment is the message — code blocks and tabular figures,
+where fixed-width columns do the reading for you.
+
+<Canvas of={TypographyStories.Code} />
+
+---
+
+> 💡 **One rule throughout:** reference the role, not the face. Reach for `var(--font-serif)`
+> rather than a hard-coded family, and a brand swap re-voices every specimen on this page at
+> once.
