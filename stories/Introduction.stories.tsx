@@ -1,4 +1,3 @@
-import { Description, Title } from "@storybook/addon-docs/blocks";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import {
   AlignCenter,
@@ -999,7 +998,7 @@ function Stat({ value, label }: { value: ReactNode; label: string }) {
 
 function Overview() {
   return (
-    <div className="mx-auto max-w-6xl space-y-10 p-6">
+    <div className="mx-auto max-w-6xl space-y-10">
       <header className="space-y-4">
         <div className="space-y-2">
           <h2 className="font-bold text-3xl text-foreground tracking-tight">Component library</h2>
@@ -1025,30 +1024,11 @@ function Overview() {
   );
 }
 
-function IntroductionDocs() {
-  return (
-    <>
-      <Title />
-      <Description />
-      <Overview />
-    </>
-  );
-}
-
 const meta = {
   title: "Components/Introduction",
   parameters: {
     layout: "fullscreen",
-    docs: {
-      page: IntroductionDocs,
-      description: {
-        component: `An at-a-glance map of every component, grouped by category. Each card shows the
-component name, its number of meaningful props (generated from the typed source), and a simplified
-visual. There are ${TOTAL_COMPONENTS} components across ${CATEGORIES.length} categories.`,
-      },
-    },
   },
-  tags: ["autodocs"],
 } satisfies Meta;
 
 export default meta;
