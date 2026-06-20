@@ -90,6 +90,18 @@ export const mind: Theme = parseTheme(
     light: mindLight,
     dark: mindDark,
     radius: "0.625rem",
+    // Fleet type: Fraunces (optical serif display) / Hanken Grotesk (warm body) /
+    // JetBrains Mono. The theme names the families only — the actual webfonts are
+    // loaded per-app via next/font, which exposes the `--font-*` vars referenced
+    // below. Named-family + generic fallbacks keep type sane before the webfont
+    // resolves (and in non-Next consumers). Flows to shadcn's --font-* via
+    // serialize.ts (--mind-font-* → --font-*).
+    font: {
+      sans: 'var(--font-hanken), "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif',
+      serif:
+        'var(--font-fraunces), "Fraunces", ui-serif, Georgia, Cambria, "Times New Roman", serif',
+      mono: 'var(--font-jb), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, "Liberation Mono", monospace',
+    },
     logo: assets.mind.logo,
     symbol: assets.mind.symbol,
     pattern: { kind: "dots", opacity: 0.06 },
