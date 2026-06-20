@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/MIND-Studio/ui/compare/v0.3.0...v0.4.0) (2026-06-20)
+
+
+### Features
+
+* **theme:** promote Fraunces/Hanken Grotesk/JetBrains Mono into Mind theme ([173a840](https://github.com/MIND-Studio/ui/commit/173a840bdf19ff270098a782d5de8c9dab5677d1))
+* **theme:** promote Fraunces/Hanken Grotesk/JetBrains Mono into Mind… ([495609a](https://github.com/MIND-Studio/ui/commit/495609a063a29a25c4e7d5f9f3366a06f9b70d57))
+
 ## [0.3.0](https://github.com/MIND-Studio/ui/compare/v0.2.0...v0.3.0) (2026-06-20)
 
 
