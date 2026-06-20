@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/MIND-Studio/ui/compare/v0.2.0...v0.3.0) (2026-06-20)
+
+
+### Features
+
+* **storybook:** make icons page searchable with category filters ([8f44e00](https://github.com/MIND-Studio/ui/commit/8f44e00c771e55348e6ae757facfff7325eda378))
+* **theme:** emit page-level brand pattern backgrounds ([589aa14](https://github.com/MIND-Studio/ui/commit/589aa14ce3f09d16bb9cf4fd92fe9a68ad966785))
+
 ## [0.2.0](https://github.com/MIND-Studio/ui/compare/v0.1.0...v0.2.0) (2026-06-07)
 
 
