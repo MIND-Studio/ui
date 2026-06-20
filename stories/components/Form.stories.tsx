@@ -13,7 +13,7 @@ import { Input } from "../../src/components/input";
 import { Button } from "../../src/components/button";
 
 const meta = {
-  title: "Components/Forms/Form",
+  title: "🧩 Components/Forms/Form",
   component: Form,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

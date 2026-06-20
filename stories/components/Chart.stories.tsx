@@ -29,7 +29,7 @@ import {
 } from "../../src/components/chart";
 
 const meta = {
-  title: "Components/Data Display/Chart",
+  title: "🧩 Components/Data Display/Chart",
   component: ChartContainer,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

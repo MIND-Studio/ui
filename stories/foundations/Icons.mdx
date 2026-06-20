@@ -1,0 +1,20 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as IconsStories from "./Icons.stories";
+
+<Meta of={IconsStories} />
+
+# ✨ Icons
+
+The complete [`lucide-react`](https://lucide.dev) icon set, imported from lucide's own registry
+so this gallery always reflects exactly the icons the package ships. Every icon inherits
+`currentColor`, so it picks up the active theme's foreground in both light and dark mode.
+
+Import any icon by name:
+
+```tsx
+import { ArrowRight } from "lucide-react";
+
+<ArrowRight className="size-5" />;
+```
+
+<Canvas of={IconsStories.All} />

@@ -1,0 +1,131 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="👋 Getting Started/Welcome" />
+
+# 👋 Welcome to `@mind-studio/ui`
+
+A **shadcn-native, multi-brand design system** for Mind projects. It ships React
+components, theme tokens, and blocks as a single published npm package, with a
+generated `styles.css` token sheet for the default brand.
+
+## 🌈 What's inside
+
+- **🧩 Pristine-vendored shadcn primitives.** The complete shadcn registry (all 56
+  `registry:ui` components, sourced from `new-york-v4`) is vendored with ~zero edits, plus
+  the full block catalog as ready-to-drop page compositions.
+- **🎨 A two-layer token system.** `base` tokens are brand-agnostic primitives named
+  `--mind-*`. `alias` tokens use **shadcn's exact variable names** (`--background`,
+  `--primary`, `--radius`, …) so the vendored components stay pristine — components never
+  reference base tokens directly.
+- **🎭 A typed, explicit theme.** A theme is a Zod object with explicit light/dark across 7
+  axes (color, grayscale, radius, font, logo, symbol, pattern). There is no derivation
+  engine: a token a theme omits falls back to base; a missing `dark` token falls back to the
+  base **dark** value, never light.
+- **🪄 A `<ThemeProvider>`.** It wraps `next-themes` (`attribute="class"`, `.dark` = mode)
+  and injects the active theme's scoped CSS under `[data-mind-theme]`. Both light and dark
+  modes are always emitted.
+- **📦 Built-in brands.** **Mind is the default** and complete; `ember` and `arctic` ship as
+  demo brands carrying only their diffs.
+
+### ⚖️ Dual delivery
+
+The system delivers themes two ways:
+
+- **Static CSS** — the Mind default ships as `@mind-studio/ui/styles.css`, generated from the
+  typed token source so it can never drift. It is SSR-perfect: no runtime injection needed.
+- **Runtime injection** — any theme (including custom ones) is applied at runtime via the
+  `<ThemeProvider>`, which injects that theme's scoped CSS.
+
+---
+
+## 📥 Using the package
+
+The package is published to **GitHub Packages** under the `MIND-Studio` org. GitHub Packages
+requires authentication even for public packages, so each consumer repo needs a scoped
+`.npmrc`:
+
+```ini
+# .npmrc
+@mind-studio:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```
+
+Set `NODE_AUTH_TOKEN` to a GitHub PAT with `read:packages` (in CI, the job's `GITHUB_TOKEN`
+works for same-org repos), then install:
+
+```bash
+npm install @mind-studio/ui
+```
+
+### 🎨 Wire up the styles
+
+For the **default Mind brand**, import the generated token sheet in your `globals.css`
+(Tailwind v4) — this is the static, SSR-perfect path:
+
+```css
+@import "tailwindcss";
+@import "../../node_modules/@mind-studio/ui/dist/styles.css"; /* real path, not the exports subpath */
+@source "../../node_modules/@mind-studio/ui/dist";
+```
+
+You can also import the published subpath directly where your bundler resolves it:
+
+```ts
+import "@mind-studio/ui/styles.css";
+```
+
+### 🪄 Wrap your app in `<ThemeProvider>`
+
+To switch brands or apply a custom theme at **runtime**, wrap your tree in the provider. It
+injects the active theme's scoped CSS and drives light/dark mode:
+
+```tsx
+import { ThemeProvider } from "@mind-studio/ui";
+
+export default function App({ children }) {
+  return <ThemeProvider>{children}</ThemeProvider>;
+}
+```
+
+Use `styles.css` when you only need the Mind default and want zero runtime cost; reach for
+the provider when you switch brands or ship a custom theme.
+
+### 🧱 Import paths
+
+Components and theming utilities come from the package barrel; blocks have their own export:
+
+```tsx
+import { Button, Card, Dialog, ThemeProvider } from "@mind-studio/ui";
+import { LoginForm } from "@mind-studio/ui/blocks";
+import "@mind-studio/ui/styles.css";
+```
+
+---
+
+## 🤝 Contributing & requesting changes
+
+This is an internal Mind project. To make a change:
+
+1. **Clone** the repo and create a **branch**.
+2. Commit using [Conventional Commits](https://www.conventionalcommits.org) on `main`:
+   `fix:` → patch, `feat:` → minor, `feat!:` / `BREAKING CHANGE:` → major. `chore:` /
+   `docs:` / `refactor:` / `test:` don't trigger a release.
+3. Open a **pull request**.
+4. **release-please** does the rest: it keeps an open *"chore(main): release X.Y.Z"* PR that
+   rolls pending commits into `CHANGELOG.md` and bumps the version. Merging that PR cuts the
+   release, tags it, and publishes the package. **Never tag or hand-edit `CHANGELOG.md`.**
+
+> 💡 To **request** a change rather than make it yourself, open a **GitHub issue** on the repo.
+
+---
+
+## 🧭 Where to go next
+
+A few good starting points:
+
+- 🎨 [**Foundations → Colors**](?path=/docs/foundations-colors--docs) — the two-layer token
+  model and the brand swatches.
+- 🧩 [**Components → Introduction**](?path=/story/components-introduction--catalog) — the full
+  catalog at a glance.
+- 🧊 **Blocks** — ready-made shadcn page compositions; browse the **Blocks** section in the
+  sidebar.

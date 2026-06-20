@@ -1,0 +1,28 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as AvatarsStories from "./Avatars.stories";
+
+<Meta of={AvatarsStories} />
+
+{/*
+  PLACEHOLDER gallery. Avatars are free placeholder FACES from pravatar.cc
+  (https://i.pravatar.cc) — reference-only, for mocking, NOT a licensed Mind
+  set. The curated Mind avatar set (with licensing) is still pending from the
+  user. When provided, the swap is one edit in `./_assets` (change
+  `CDN_BASE_AVATARS` / the `AVATARS` array); this page renders whatever that
+  module exports.
+*/}
+
+# 🌱 Avatars
+
+A small set of **reference-only** placeholder portraits **for mocking** user
+lists, comment threads, account menus, and presence UI. Every tile links to a
+CDN URL — **no binary assets ship in this package**.
+
+> 🧪 **Placeholder faces.** These are free [pravatar.cc](https://i.pravatar.cc)
+> stand-in faces, not Mind people or a licensed avatar set. They exist so
+> prototypes look real; the curated Mind set will replace them in a single
+> `_assets.ts` edit. **Do not ship these to production.**
+
+## 👥 Avatars
+
+<Canvas of={AvatarsStories.Gallery} />

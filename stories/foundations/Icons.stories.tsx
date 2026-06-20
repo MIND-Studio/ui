@@ -10,8 +10,7 @@ import { icons } from "lucide-react";
  */
 
 const meta = {
-  title: "Foundations/Icons",
-  tags: ["autodocs"],
+  title: "🌱 Foundations/Icons",
   parameters: { layout: "fullscreen" },
 } satisfies Meta;
 
@@ -20,9 +19,12 @@ type Story = StoryObj<typeof meta>;
 
 const entries = Object.entries(icons);
 
+// Hidden from the sidebar (!dev): the visible page is Icons.mdx, which embeds
+// this story via <Canvas of={...}> and stays covered by the axe gate.
 export const All: Story = {
+  tags: ["!dev"],
   render: () => (
-    <div className="p-6">
+    <div>
       <p className="text-muted-foreground mb-4 text-sm">
         {entries.length} icons from <code className="font-mono">lucide-react</code>
       </p>

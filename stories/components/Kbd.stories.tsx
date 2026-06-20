@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Kbd, KbdGroup } from "../../src/components/kbd";
 
 const meta = {
-  title: "Components/Data Display/Kbd",
+  title: "🧩 Components/Data Display/Kbd",
   component: Kbd,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

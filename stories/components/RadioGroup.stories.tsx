@@ -3,7 +3,7 @@ import { RadioGroup, RadioGroupItem } from "../../src/components/radio-group";
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Forms/RadioGroup",
+  title: "🧩 Components/Forms/RadioGroup",
   component: RadioGroup,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

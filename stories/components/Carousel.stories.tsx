@@ -9,7 +9,7 @@ import {
 } from "../../src/components/carousel";
 
 const meta = {
-  title: "Components/Layout/Carousel",
+  title: "🧩 Components/Layout/Carousel",
   component: Carousel,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

@@ -8,7 +8,7 @@ import {
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Forms/Date Picker",
+  title: "🧩 Components/Forms/Date Picker",
   component: DatePicker,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

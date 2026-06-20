@@ -16,7 +16,7 @@ import { Badge } from "../../src/components/badge";
  * into features with the boolean flags.
  */
 const meta = {
-  title: "Components/Data Display/Data Table",
+  title: "🧩 Components/Data Display/Data Table",
   component: DataTable,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

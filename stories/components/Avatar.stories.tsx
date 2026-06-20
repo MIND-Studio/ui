@@ -10,7 +10,7 @@ import {
 } from "../../src/components/avatar";
 
 const meta = {
-  title: "Components/Data Display/Avatar",
+  title: "🧩 Components/Data Display/Avatar",
   component: Avatar,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

@@ -15,7 +15,7 @@ import {
 } from "../../src/components/alert-dialog";
 
 const meta = {
-  title: "Components/Overlays/AlertDialog",
+  title: "🧩 Components/Overlays/AlertDialog",
   component: AlertDialog,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

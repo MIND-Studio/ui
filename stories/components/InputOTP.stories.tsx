@@ -7,7 +7,7 @@ import {
 } from "../../src/components/input-otp";
 
 const meta = {
-  title: "Components/Forms/InputOTP",
+  title: "🧩 Components/Forms/InputOTP",
   component: InputOTP,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

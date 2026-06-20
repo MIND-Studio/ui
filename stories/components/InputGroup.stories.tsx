@@ -11,7 +11,7 @@ import {
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Utilities/InputGroup",
+  title: "🧩 Components/Utilities/InputGroup",
   component: InputGroup,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

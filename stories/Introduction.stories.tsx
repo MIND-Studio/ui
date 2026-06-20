@@ -1025,7 +1025,7 @@ function Overview() {
 }
 
 const meta = {
-  title: "Components/Introduction",
+  title: "🧩 Components/Introduction",
   parameters: {
     layout: "fullscreen",
   },

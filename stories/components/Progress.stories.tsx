@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Progress } from "../../src/components/progress";
 
 const meta = {
-  title: "Components/Feedback/Progress",
+  title: "🧩 Components/Feedback/Progress",
   component: Progress,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

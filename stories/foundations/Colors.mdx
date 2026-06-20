@@ -1,0 +1,18 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as ColorsStories from "./Colors.stories";
+
+<Meta of={ColorsStories} />
+
+# 🎨 Colors
+
+Mind UI colors live in **two layers**. The base ramp — brand-agnostic `--mind-*`
+primitives — is retinted per brand; the semantic aliases (shadcn's exact names like
+`--background`, `--primary`) reference it, so vendored components stay pristine.
+
+Reach for the **surface** palette for page chrome (backgrounds, cards, borders, inputs,
+rings), the **brand & status** palette for primary actions and destructive states, and the
+self-contained **sidebar** palette when the app sidebar needs to theme independently of page
+surfaces. Every chip resolves a live CSS variable — **switch brand and mode in the toolbar**
+to see them all update at once.
+
+<Canvas of={ColorsStories.Colors} />

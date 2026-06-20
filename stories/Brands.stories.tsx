@@ -9,7 +9,7 @@ import { useMindTheme } from "../src/theme/provider";
  */
 
 const meta = {
-  title: "Brands/Summary",
+  title: "👋 Getting Started/Brands",
   parameters: { layout: "fullscreen" },
 } satisfies Meta;
 
@@ -58,7 +58,11 @@ function Summary() {
   );
 }
 
+// Hidden from the sidebar (!dev): the visible page is getting-started/Brands.mdx,
+// which embeds this story via <Canvas of={...}> so the preview renders through the
+// brand/mode decorator (live logo, palette, radius) and stays axe-covered.
 export const Summary_: Story = {
   name: "Summary",
+  tags: ["!dev"],
   render: () => <Summary />,
 };

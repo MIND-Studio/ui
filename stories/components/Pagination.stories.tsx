@@ -10,7 +10,7 @@ import {
 } from "../../src/components/pagination";
 
 const meta = {
-  title: "Components/Navigation/Pagination",
+  title: "🧩 Components/Navigation/Pagination",
   component: Pagination,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

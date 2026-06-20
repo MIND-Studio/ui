@@ -3,7 +3,7 @@ import { Textarea } from "../../src/components/textarea";
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Forms/Textarea",
+  title: "🧩 Components/Forms/Textarea",
   component: Textarea,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

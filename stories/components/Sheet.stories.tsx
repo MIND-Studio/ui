@@ -14,7 +14,7 @@ import {
 } from "../../src/components/sheet";
 
 const meta = {
-  title: "Components/Overlays/Sheet",
+  title: "🧩 Components/Overlays/Sheet",
   component: Sheet,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

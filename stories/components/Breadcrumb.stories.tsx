@@ -10,7 +10,7 @@ import {
 } from "../../src/components/breadcrumb";
 
 const meta = {
-  title: "Components/Navigation/Breadcrumb",
+  title: "🧩 Components/Navigation/Breadcrumb",
   component: Breadcrumb,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

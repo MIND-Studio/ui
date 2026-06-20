@@ -1,0 +1,146 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Button,
+  Skeleton,
+} from "../../src/index";
+
+<Meta title="🌱 Foundations/Motion" />
+
+# 🌱 Motion
+
+> ⚠️ **Conventions, not enforced tokens.** Mind UI vendors the shadcn registry pristinely and
+> **does not edit vendored components**, so motion is not a token axis you can theme. This page
+> documents the animation **vocabulary the components already use** — read it as guidance for
+> composing your own UI consistently with them, not as a knob to turn.
+
+## 🎞️ The animation vocabulary
+
+shadcn's primitives animate with Tailwind's `tailwindcss-animate` utilities, driven by the
+component's open/closed (and side/state) attributes. The recurring pieces:
+
+- **`animate-in` / `animate-out`** — the enter/exit base utilities that turn a transition on.
+- **`fade-in-*` / `fade-out-*`** — opacity transitions (e.g. `fade-in-0`).
+- **`zoom-in-*` / `zoom-out-*`** — scale transitions (e.g. `zoom-in-95` scales from 95%).
+- **`slide-in-from-*` / `slide-out-to-*`** — directional slides (`top`, `bottom`, `left`,
+  `right`), often keyed to the popover/tooltip side.
+- **`data-[state=…]` transitions** — the animation is gated on Radix state attributes, so the
+  same element animates differently opening vs closing:
+  `data-[state=open]:animate-in data-[state=closed]:animate-out`.
+
+For example, the vendored **Dialog** content carries:
+
+```
+data-[state=open]:animate-in data-[state=closed]:animate-out
+data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0
+data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95
+duration-200
+```
+
+…and the **Accordion** content uses keyframed height animations
+(`data-[state=open]:animate-accordion-down`, `data-[state=closed]:animate-accordion-up`).
+
+## ⏱️ The duration ladder
+
+There's no enforced duration token, but the vendored components settle into a de-facto ladder.
+Match it when you add motion of your own:
+
+| Duration | Feel | Where it shows up |
+| --- | --- | --- |
+| **100ms** | Snappy | small hover/press feedback, micro-transitions |
+| **200ms** | Default | dialogs, tooltips, accordions (`duration-200`) |
+| **300ms** | Deliberate | larger surfaces sliding in (e.g. sheet exit `duration-300`) |
+
+Keep enter/exit symmetrical and lean toward the shorter end — overlays read as fast and
+intentional rather than sluggish.
+
+## ♿ `prefers-reduced-motion`
+
+Respect users who ask for less motion. Tailwind exposes the `motion-reduce:` variant; gate
+non-essential animation behind it (e.g. `motion-reduce:transition-none`,
+`motion-reduce:animate-none`) so the experience degrades to instant state changes rather than
+movement. This is a hard accessibility expectation, not a nicety — treat any decorative motion
+you add as opt-out by default for reduced-motion users.
+
+---
+
+## 👀 Live previews
+
+These render real components from the package so you can watch the vocabulary in action.
+
+### Dialog — fade + zoom (`duration-200`)
+
+Opening the dialog runs `fade-in-0` + `zoom-in-95`; closing reverses it.
+
+<div style={{ padding: "1rem" }}>
+  <Dialog>
+    <DialogTrigger asChild>
+      <Button>Open dialog</Button>
+    </DialogTrigger>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Fade and zoom</DialogTitle>
+        <DialogDescription>
+          This overlay enters with a 200ms fade-and-zoom and exits the same way.
+        </DialogDescription>
+      </DialogHeader>
+      <DialogFooter>
+        <DialogClose asChild>
+          <Button variant="outline">Close dialog</Button>
+        </DialogClose>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+</div>
+
+### Accordion — height expand/collapse
+
+Expanding a panel animates its height via `animate-accordion-down`; collapsing uses
+`animate-accordion-up`.
+
+<div style={{ padding: "1rem", maxWidth: "28rem" }}>
+  <Accordion type="single" collapsible defaultValue="motion-1">
+    <AccordionItem value="motion-1">
+      <AccordionTrigger>What animates here?</AccordionTrigger>
+      <AccordionContent>
+        The panel height transitions open and closed using keyframed accordion
+        animations — no layout jump.
+      </AccordionContent>
+    </AccordionItem>
+    <AccordionItem value="motion-2">
+      <AccordionTrigger>Is it themeable?</AccordionTrigger>
+      <AccordionContent>
+        No — motion is a convention, not a token. These components animate the
+        same way across every brand.
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+</div>
+
+### Skeleton — continuous pulse
+
+The loading **Skeleton** uses `animate-pulse` for a low-key, continuous breathing effect.
+
+<div
+  style={{ display: "flex", alignItems: "center", gap: "0.75rem", padding: "1rem" }}
+  role="status"
+  aria-label="Loading preview"
+>
+  <Skeleton className="size-12 rounded-full" />
+  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+    <Skeleton className="h-4 w-[12rem]" />
+    <Skeleton className="h-4 w-[9rem]" />
+  </div>
+  <span className="sr-only">Loading…</span>
+</div>

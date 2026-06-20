@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { ScrollArea } from "../../src/components/scroll-area";
 
 const meta = {
-  title: "Components/Layout/ScrollArea",
+  title: "🧩 Components/Layout/ScrollArea",
   component: ScrollArea,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

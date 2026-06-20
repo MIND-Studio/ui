@@ -3,7 +3,7 @@ import * as React from "react";
 import { Calendar } from "../../src/components/calendar";
 
 const meta = {
-  title: "Components/Data Display/Calendar",
+  title: "🧩 Components/Data Display/Calendar",
   component: Calendar,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

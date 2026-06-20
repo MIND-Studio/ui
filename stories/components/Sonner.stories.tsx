@@ -4,7 +4,7 @@ import { Button } from "../../src/components/button";
 import { Toaster } from "../../src/components/sonner";
 
 const meta = {
-  title: "Components/Feedback/Sonner",
+  title: "🧩 Components/Feedback/Sonner",
   component: Toaster,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

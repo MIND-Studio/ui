@@ -15,7 +15,7 @@ import { Input } from "../../src/components/input";
 import { Textarea } from "../../src/components/textarea";
 
 const meta = {
-  title: "Components/Forms/Field",
+  title: "🧩 Components/Forms/Field",
   component: Field,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

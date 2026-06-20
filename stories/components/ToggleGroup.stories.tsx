@@ -13,7 +13,7 @@ import {
 } from "../../src/components/toggle-group";
 
 const meta = {
-  title: "Components/Forms/ToggleGroup",
+  title: "🧩 Components/Forms/ToggleGroup",
   component: ToggleGroup,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

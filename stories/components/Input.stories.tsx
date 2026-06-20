@@ -4,7 +4,7 @@ import { Input } from "../../src/components/input";
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Forms/Input",
+  title: "🧩 Components/Forms/Input",
   component: Input,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

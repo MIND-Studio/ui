@@ -3,7 +3,7 @@ import { Bold, Italic, Underline } from "lucide-react";
 import { Toggle } from "../../src/components/toggle";
 
 const meta = {
-  title: "Components/Forms/Toggle",
+  title: "🧩 Components/Forms/Toggle",
   component: Toggle,
   tags: ["autodocs"],
   argTypes: {

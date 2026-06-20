@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Skeleton } from "../../src/components/skeleton";
 
 const meta = {
-  title: "Components/Feedback/Skeleton",
+  title: "🧩 Components/Feedback/Skeleton",
   component: Skeleton,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Spinner } from "../../src/components/spinner";
 
 const meta = {
-  title: "Components/Feedback/Spinner",
+  title: "🧩 Components/Feedback/Spinner",
   component: Spinner,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

@@ -7,7 +7,7 @@ import {
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Forms/NativeSelect",
+  title: "🧩 Components/Forms/NativeSelect",
   component: NativeSelect,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

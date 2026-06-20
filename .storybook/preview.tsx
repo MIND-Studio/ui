@@ -17,10 +17,11 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
-          "Foundations",
-          "Tokens",
-          "Brands",
-          "Components",
+          "👋 Getting Started",
+          ["Welcome", "Brands"],
+          "🌱 Foundations",
+          ["Colors", "Typography", "Shapes", "Motion", "Icons", "Imagery", "Avatars"],
+          "🧩 Components",
           [
             "Introduction",
             "Forms",
@@ -32,6 +33,8 @@ const preview: Preview = {
             "Layout",
             "Utilities",
           ],
+          "🎛️ Patterns",
+          "🧊 Blocks",
         ],
       },
     },

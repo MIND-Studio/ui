@@ -106,7 +106,7 @@ function DemoSidebar() {
 }
 
 const meta = {
-  title: "Patterns/Sidebar/Coming Soon",
+  title: "🎛️ Patterns/Sidebar/Coming Soon",
   parameters: { layout: "fullscreen" },
 } satisfies Meta;
 

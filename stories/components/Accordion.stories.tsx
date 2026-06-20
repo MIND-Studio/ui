@@ -7,7 +7,7 @@ import {
 } from "../../src/components/accordion";
 
 const meta = {
-  title: "Components/Layout/Accordion",
+  title: "🧩 Components/Layout/Accordion",
   component: Accordion,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

@@ -10,7 +10,7 @@ import {
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Forms/Combobox",
+  title: "🧩 Components/Forms/Combobox",
   component: Combobox,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

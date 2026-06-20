@@ -8,7 +8,7 @@ import {
 } from "../../src/components/hover-card";
 
 const meta = {
-  title: "Components/Overlays/HoverCard",
+  title: "🧩 Components/Overlays/HoverCard",
   component: HoverCard,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

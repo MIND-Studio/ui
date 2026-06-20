@@ -1,0 +1,16 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as BrandsStories from "../Brands.stories";
+
+<Meta of={BrandsStories} />
+
+# 🎭 Brands
+
+Mind UI ships three built-in brands: **Mind** (the default), **Ember**, and **Arctic**. Use the
+**brand switcher in the Storybook toolbar** to swap between them — the live preview below
+repaints from each theme's tokens (logo, symbol, pattern, palette, and radius).
+
+A brand is a typed theme object with explicit light/dark values across seven axes. Mind's maps
+are complete and populate the unscoped `:root` / `.dark`; Ember and Arctic ship only their
+diffs and fall back to base for anything they omit.
+
+<Canvas of={BrandsStories.Summary_} />

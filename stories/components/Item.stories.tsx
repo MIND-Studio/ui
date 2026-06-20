@@ -15,7 +15,7 @@ import {
 import { Button } from "../../src/components/button";
 
 const meta = {
-  title: "Components/Data Display/Item",
+  title: "🧩 Components/Data Display/Item",
   component: Item,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

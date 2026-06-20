@@ -7,7 +7,7 @@ import { Input } from "../../src/components/input";
 import { Label } from "../../src/components/label";
 
 const meta = {
-  title: "Components/Utilities/Direction",
+  title: "🧩 Components/Utilities/Direction",
   component: DirectionProvider,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

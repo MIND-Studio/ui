@@ -11,7 +11,7 @@ import {
 } from "../../src/components/table";
 
 const meta = {
-  title: "Components/Data Display/Table",
+  title: "🧩 Components/Data Display/Table",
   component: Table,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

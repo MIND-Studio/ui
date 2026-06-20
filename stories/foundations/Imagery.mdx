@@ -1,0 +1,49 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as ImageryStories from "./Imagery.stories";
+
+<Meta of={ImageryStories} />
+
+{/*
+  PLACEHOLDER gallery. Images are free, clearly-licensed Lorem Picsum stand-ins
+  (https://picsum.photos) — NOT Mind brand imagery. The curated, licensed Mind
+  imagery set is still pending from the user. When provided, the swap is one
+  edit in `./_assets` (change `CDN_BASE_IMAGERY` / the `IMAGERY` array); this
+  page renders whatever that module exports.
+*/}
+
+# 🌱 Imagery
+
+A reference gallery of imagery for mock-ups, decks, and prototypes. Every tile
+links to a CDN URL — **no binary assets ship in this package**.
+
+> 🧪 **Placeholder set.** These are free [Lorem Picsum](https://picsum.photos)
+> images, not Mind's brand photography. The curated Mind imagery (with
+> licensing) will replace them in a single `_assets.ts` edit.
+
+## 🎨 Tone
+
+- 🌅 **Warm and human.** Favour natural light, real environments, and candid
+  moments over stock-photo staging.
+- 🤫 **Quiet, not loud.** Imagery supports the message; it should never fight the
+  UI or the type.
+- 🌍 **Inclusive and grounded.** Reach for authentic, diverse, real-world scenes.
+
+## ✅ Do / 🚫 Don't
+
+- ✅ **Do** keep a consistent colour temperature across a single surface.
+- ✅ **Do** leave breathing room — let subjects sit comfortably in the frame.
+- ✅ **Do** check contrast when text overlays an image (overlay/scrim as needed).
+- 🚫 **Don't** stretch or squash — always preserve the source aspect ratio.
+- 🚫 **Don't** stack heavy filters; subtle grading only.
+- 🚫 **Don't** ship an image without meaningful `alt` text.
+
+## 📐 Recommended aspect ratios
+
+- **4:3** — general gallery and card imagery (the ratio used below).
+- **16:9** — hero banners and wide cover images.
+- **1:1** — thumbnails, tiles, and avatars.
+- **3:4 / 9:16** — portrait and mobile-first surfaces.
+
+## 🖼️ Gallery
+
+<Canvas of={ImageryStories.Gallery} />

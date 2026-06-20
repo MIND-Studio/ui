@@ -3,7 +3,7 @@ import { BadgeCheck, Clock, X } from "lucide-react";
 import { Badge } from "../../src/components/badge";
 
 const meta = {
-  title: "Components/Data Display/Badge",
+  title: "🧩 Components/Data Display/Badge",
   component: Badge,
   tags: ["autodocs"],
   args: { children: "Badge" },

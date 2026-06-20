@@ -12,7 +12,7 @@ import {
 } from "../../src/components/popover";
 
 const meta = {
-  title: "Components/Overlays/Popover",
+  title: "🧩 Components/Overlays/Popover",
   component: Popover,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

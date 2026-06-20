@@ -12,7 +12,7 @@ import {
 } from "../../src/components/drawer";
 
 const meta = {
-  title: "Components/Overlays/Drawer",
+  title: "🧩 Components/Overlays/Drawer",
   component: Drawer,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

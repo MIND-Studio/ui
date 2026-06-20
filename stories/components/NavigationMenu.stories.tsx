@@ -10,7 +10,7 @@ import {
 } from "../../src/components/navigation-menu";
 
 const meta = {
-  title: "Components/Navigation/NavigationMenu",
+  title: "🧩 Components/Navigation/NavigationMenu",
   component: NavigationMenu,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

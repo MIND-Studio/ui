@@ -6,7 +6,7 @@ import {
 } from "../../src/components/resizable";
 
 const meta = {
-  title: "Components/Layout/Resizable",
+  title: "🧩 Components/Layout/Resizable",
   component: ResizablePanelGroup,
   tags: ["autodocs"],
   parameters: {

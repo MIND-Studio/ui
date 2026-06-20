@@ -8,7 +8,7 @@ import {
 import { Button } from "../../src/components/button";
 
 const meta = {
-  title: "Components/Buttons & Actions/ButtonGroup",
+  title: "🧩 Components/Buttons & Actions/ButtonGroup",
   component: ButtonGroup,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

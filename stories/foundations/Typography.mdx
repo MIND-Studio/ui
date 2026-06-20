@@ -1,0 +1,15 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as TypographyStories from "./Typography.stories";
+
+<Meta of={TypographyStories} />
+
+# 🔤 Typography
+
+Three font-family stacks — **sans** for UI and body, **serif** for editorial, **mono** for
+code and data — exposed as `--font-*` aliases over the `--mind-font-*` primitives. A brand can
+swap any stack; everything else inherits the system defaults.
+
+Each specimen renders with its live CSS variable, so **changing brand in the toolbar**
+re-paints the page with that brand's chosen stack.
+
+<Canvas of={TypographyStories.Typography} />

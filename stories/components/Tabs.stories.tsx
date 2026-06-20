@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../src/components/tabs";
 
 const meta = {
-  title: "Components/Navigation/Tabs",
+  title: "🧩 Components/Navigation/Tabs",
   component: Tabs,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

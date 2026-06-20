@@ -17,7 +17,7 @@ import {
 } from "../../src/components/menubar";
 
 const meta = {
-  title: "Components/Overlays/Menubar",
+  title: "🧩 Components/Overlays/Menubar",
   component: Menubar,
   tags: ["autodocs"],
   parameters: { layout: "fullscreen" },

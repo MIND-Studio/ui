@@ -19,7 +19,7 @@ import {
 } from "../../src/components/command";
 
 const meta = {
-  title: "Components/Buttons & Actions/Command",
+  title: "🧩 Components/Buttons & Actions/Command",
   component: Command,
   tags: ["autodocs"],
   parameters: {

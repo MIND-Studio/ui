@@ -12,3 +12,10 @@ body {
   background-color: var(--background);
   color: var(--foreground);
 }
+
+/* Storybook's docs theme renders h2 at a regular weight; bold it so docs-page
+   section headings match the bolder h1/h3. The heading carries no stable class
+   of its own, so target it through the docs content wrapper. */
+.sbdocs-content h2 {
+  font-weight: 700;
+}
