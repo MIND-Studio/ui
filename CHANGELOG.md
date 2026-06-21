@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.6.0](https://github.com/MIND-Studio/ui/compare/v0.5.0...v0.6.0) (2026-06-21)
+
+
+### Features
+
+* **brand:** export canonical mark artwork via ./brand subpath ([1a56d5c](https://github.com/MIND-Studio/ui/commit/1a56d5c84e236b87cec8eeba791762d08c06ad83))
+* **brand:** ship real Mind logo with serif wordmark and Foundations docs ([52b9a61](https://github.com/MIND-Studio/ui/commit/52b9a618de009af794663a85b246bc62a12315a3))
+* ship real Mind logo, typography roles, and public ./brand export ([0d8cbb8](https://github.com/MIND-Studio/ui/commit/0d8cbb83a7b44e162ae22de47900894bfab319b4))
+* **typography:** redefine font roles — serif headlines, sans body, mono technical ([05d29ce](https://github.com/MIND-Studio/ui/commit/05d29ced9a89e529d9c20644e2d9fd7e7fc64171))
+
 ## [0.5.0](https://github.com/MIND-Studio/ui/compare/v0.4.0...v0.5.0) (2026-06-21)
 
 
