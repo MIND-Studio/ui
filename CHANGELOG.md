@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/MIND-Studio/ui/compare/v0.4.0...v0.5.0) (2026-06-21)
+
+
+### Features
+
+* add success/warning/error/info semantic state tokens ([0170fa3](https://github.com/MIND-Studio/ui/commit/0170fa33cca6063ffeb1fccb81c1cebd3dad2bc2))
+* add success/warning/error/info semantic state tokens ([963c87b](https://github.com/MIND-Studio/ui/commit/963c87bc3aaabf394edd24fa960b591a90b04eb8))
+
 ## [0.4.0](https://github.com/MIND-Studio/ui/compare/v0.3.0...v0.4.0) (2026-06-20)
 
 
