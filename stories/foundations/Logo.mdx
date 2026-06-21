@@ -1,0 +1,106 @@
+import { Meta, Canvas } from "@storybook/addon-docs/blocks";
+import * as LogoStories from "./Logo.stories";
+
+<Meta of={LogoStories} />
+
+# 🪢 Logo
+
+The Mind logo is an **interlocking weave** — three nodes looping into a continuous
+knot, drawn in the brand green gradient. It is the most visible expression of the
+brand: treat it with care and apply it consistently across every surface.
+
+> 🧬 **One source of truth.** Every specimen on this page is generated from the
+> canonical mark in `src/themes/mind-mark.ts` — the same artwork the `Mind` theme
+> ships as its `logo` and `symbol`. The documentation can never drift from the
+> shipped asset.
+
+## 🧩 Anatomy
+
+The logo has two elements you can use independently:
+
+- **Symbol** — the weave mark on its own. Use it for app icons, favicons, avatars,
+  loaders, and any compact or square placement.
+- **Wordmark** — the symbol locked up with "Mind" set in the brand serif
+  (**Fraunces**, the same face used across the product). Use it as the primary
+  signature wherever there is room (headers, footers, decks, docs).
+
+## 🔤 Lockups
+
+The gradient mark is **identical in light and dark** — only the wordmark ink flips
+for legibility. The wordmark is **composed from live text in Fraunces**, not a
+baked image, so it always renders in the real brand typeface. Drop in the live,
+theme-aware components:
+
+```tsx
+import { Logo, Symbol } from "@mind-studio/ui";
+
+<Logo />               {/* symbol + serif wordmark, follows the active brand + mode */}
+<Logo symbolOnly />    {/* just the symbol, no wordmark */}
+<Symbol />             {/* the bare mark */}
+```
+
+<Canvas of={LogoStories.Lockups} />
+
+## 📐 Construction
+
+The mark is drawn on a circular grid — every node shares one unit radius and a
+common baseline, so the loops stay optically even. Don't redraw it by hand; always
+use the supplied vector.
+
+<Canvas of={LogoStories.Construction} />
+
+## 🛟 Clearspace
+
+Protect the logo with a minimum **clearspace** — a margin no other element may
+enter. It scales with the logo, so it holds at any size.
+
+<Canvas of={LogoStories.Clearspace} />
+
+## 📏 Minimum sizes
+
+Below these thresholds the weave loses definition. In small or square contexts,
+reach for the **symbol** rather than the wordmark.
+
+<Canvas of={LogoStories.Sizing} />
+
+## 📱 App icon
+
+For app icons, the mark sits on a solid backplate with a rounded-square mask
+(≈ 22% corner radius). The **primary** icon is the white mark on brand green;
+on light or dark grounds, use the full gradient mark.
+
+<Canvas of={LogoStories.AppIcon} />
+
+## 🔖 Favicon
+
+The same mark serves the favicon. It reads cleanly down to **16px** — ship a
+multi-size `.ico`/SVG and let the browser pick.
+
+```html
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+```
+
+<Canvas of={LogoStories.Favicon} />
+
+## 🎨 Colour & monochrome
+
+The gradient mark is the default. When the gradient can't survive — one-colour
+print, engraving, embroidery, faxes, or busy photography — use the **single-colour**
+mark instead: ink on light grounds, reversed (white) on dark.
+
+<Canvas of={LogoStories.Monochrome} />
+
+## ✅ Do / 🚫 Don't
+
+- ✅ **Do** use the supplied vector artwork and keep the original proportions.
+- ✅ **Do** give the logo its full clearspace.
+- ✅ **Do** switch to the reversed (white) mark on dark or photographic grounds.
+- ✅ **Do** prefer the symbol over the wordmark in small or square placements.
+- 🚫 **Don't** recolour, restyle, or re-gradient the mark.
+- 🚫 **Don't** stretch, squash, rotate, or skew it.
+- 🚫 **Don't** add shadows, glows, outlines, or other effects.
+- 🚫 **Don't** place the gradient mark on a low-contrast or clashing background.
+
+<Canvas of={LogoStories.Misuse} />

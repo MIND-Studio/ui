@@ -1,0 +1,22 @@
+<!--
+  Load the Mind brand webfonts into the Storybook preview. In a consuming app
+  these arrive via next/font (exposing --font-fraunces / --font-hanken / --font-jb);
+  Storybook has no next/font, so without this the theme's font stacks
+  (`var(--font-fraunces), "Fraunces", …`) hit an undefined var, the whole
+  font-family declaration becomes invalid, and type falls back to a system face.
+  Here we load the fonts and define those vars so Storybook shows the REAL brand
+  type — Fraunces (serif, incl. the logo wordmark), Hanken Grotesk, JetBrains Mono.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  :root {
+    --font-fraunces: "Fraunces";
+    --font-hanken: "Hanken Grotesk";
+    --font-jb: "JetBrains Mono";
+  }
+</style>

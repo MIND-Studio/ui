@@ -1,7 +1,7 @@
 // Components
 export { Button, buttonVariants } from "./components/button";
 export { Logo, Symbol, Pattern, patternStyle } from "./components/brand";
-export type { LogoProps, PatternProps } from "./components/brand";
+export type { LogoProps, SymbolProps, PatternProps } from "./components/brand";
 export { Input } from "./components/input";
 export { Label } from "./components/label";
 export { Badge, badgeVariants } from "./components/badge";
