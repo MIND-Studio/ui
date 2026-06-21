@@ -1,6 +1,6 @@
 {
   "name": "@mind-studio/ui",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Mind UI — a shadcn-native, multi-brand design system for Mind projects.",
   "type": "module",
   "license": "MIT",
