@@ -42,6 +42,20 @@ ${emitRootCss(mind)}
   *:focus-visible {
     outline-color: var(--ring);
   }
+  /*
+   * Typography roles (brand-agnostic; resolve through each theme's --font-*):
+   *   h1–h3  display headings → the brand serif (Fraunces in Mind)
+   *   h4–h6  structural headings → inherit the body sans (Hanken), legible at
+   *          small sizes in dense UI
+   *   code/kbd/pre/samp → the brand mono (handled by Tailwind preflight via
+   *          --font-mono; <kbd> additionally fixed in its component)
+   * Override per-element with the font-sans/serif/mono utilities where needed.
+   */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+  }
 }
 
 ${emitThemeInline()}

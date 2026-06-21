@@ -5,9 +5,14 @@ import * as TypographyStories from "./Typography.stories";
 
 # 🔤 Typography
 
-Three font-family stacks — **sans** for UI and body, **serif** for editorial, **mono** for
-code and data — exposed as `--font-*` aliases over the `--mind-font-*` primitives. A brand can
-swap any stack; everything else inherits the system defaults.
+Three font-family stacks, each with one job — exposed as `--font-*` aliases over the
+`--mind-font-*` primitives. A brand can swap any stack; everything else inherits the defaults.
+
+- **Serif** (Fraunces) — **headlines**. The base layer sets `h1`–`h3` in the serif automatically.
+- **Sans** (Hanken Grotesk) — **the default** for body copy, UI chrome, and small structural
+  headings (`h4`–`h6`).
+- **Mono** (JetBrains Mono) — **code and technical labels** only: code blocks, `kbd` keys,
+  tokens, and eyebrows. Never running prose.
 
 Each specimen renders with its live CSS variable, so **changing brand in the toolbar**
 re-paints the page with that brand's chosen stack.
@@ -20,18 +25,20 @@ The raw faces, side by side — a sentence and a glyph set per stack.
 
 ## 📐 The type scale
 
-The sans stack across the steps a brand actually composes with — from a `text-5xl` display
-down to a `text-xs` caption. One face, asked to hold up from headline to fine print.
+The scale across the steps a brand composes with — from a `text-5xl` display down to a
+`text-xs` caption. **Display, Title, and Heading map to `h1`–`h3` and carry the serif**;
+everything from Subheading down is sans — the same split the base layer applies to real
+headings.
 
 <Canvas of={TypographyStories.Scale} />
 
-## ✍️ Serif in its element — an editorial piece
+## ✍️ The three roles together
 
-Where the **serif** stack earns its keep: a real article with a headline, a lead, running
-body copy, a pull quote, and lists. This is the stack tuned for prose you linger over rather
-than scan.
+How the system actually composes: **serif headlines carry the voice, the sans body does the
+reading, and a mono eyebrow marks the technical bits**. One page, three faces, each doing only
+what it does best.
 
-<Canvas of={TypographyStories.Editorial} />
+<Canvas of={TypographyStories.Composition} />
 
 ## 🧭 Sans for the interface
 
@@ -41,10 +48,12 @@ breaking stride.
 
 <Canvas of={TypographyStories.Interface} />
 
-## 💻 Mono for code & data
+## 💻 Mono for code & technical labels
 
-The **mono** stack is for when alignment is the message — code blocks and tabular figures,
-where fixed-width columns do the reading for you.
+The **mono** stack is for when alignment or technical precision is the message — code blocks,
+tabular figures, keyboard keys (`kbd`), and short technical labels. Code, `kbd`, `pre`, and
+`samp` already resolve to it automatically; reach for `font-mono` for the rest. Keep it off
+running prose and form labels.
 
 <Canvas of={TypographyStories.Code} />
 

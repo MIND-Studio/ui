@@ -20,7 +20,7 @@ const preview: Preview = {
           "👋 Getting Started",
           ["Welcome", "Brands"],
           "🌱 Foundations",
-          ["Colors", "Typography", "Shapes", "Motion", "Icons", "Imagery", "Avatars"],
+          ["Logo", "Colors", "Typography", "Shapes", "Motion", "Icons", "Imagery", "Avatars"],
           "🧩 Components",
           [
             "Introduction",

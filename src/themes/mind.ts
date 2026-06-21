@@ -124,7 +124,8 @@ export const mind: Theme = parseTheme(
         'var(--font-fraunces), "Fraunces", ui-serif, Georgia, Cambria, "Times New Roman", serif',
       mono: 'var(--font-jb), "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, "Liberation Mono", monospace',
     },
-    logo: assets.mind.logo,
+    // No `logo` image: the Logo component composes the wordmark live so "Mind"
+    // renders in the brand serif (Fraunces). See src/components/brand.tsx.
     symbol: assets.mind.symbol,
     pattern: { kind: "dots", opacity: 0.06 },
   },

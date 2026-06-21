@@ -15,28 +15,53 @@ function pickMode(resolvedMode: string | undefined): "light" | "dark" {
   return resolvedMode === "dark" ? "dark" : "light";
 }
 
-export type LogoProps = Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> & {
+export type SymbolProps = Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src" | "alt"> & {
   alt?: string;
 };
 
-/** The active brand's wordmark for the current mode. Renders nothing if unset. */
-export function Logo({ className, alt, ...props }: LogoProps) {
+export type LogoProps = React.HTMLAttributes<HTMLDivElement> & {
+  /** Render only the symbol, dropping the wordmark text. */
+  symbolOnly?: boolean;
+};
+
+/**
+ * The active brand's logo lockup: the symbol followed by the wordmark, set in
+ * the brand serif (Fraunces for Mind). The wordmark is composed from live DOM
+ * text — not a baked image — so it renders in the real brand webfont (an
+ * `<img>`-embedded SVG can't reach the app's fonts). A theme may still supply a
+ * fully bespoke wordmark image via its `logo` asset; when present that image is
+ * used as-is instead.
+ */
+export function Logo({ className, symbolOnly, ...props }: LogoProps) {
   const { theme, resolvedMode } = useMindTheme();
-  const src = theme.logo?.[pickMode(resolvedMode)];
-  if (!src) return null;
-  // eslint-disable-next-line @next/next/no-img-element -- data-URI brand asset
+  const mode = pickMode(resolvedMode);
+  const custom = theme.logo?.[mode];
+  if (custom) {
+    return (
+      <div className={cn("flex items-center", className)} {...props}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- data-URI brand asset */}
+        <img src={custom} alt={`${theme.label} logo`} className="h-8 w-auto" />
+      </div>
+    );
+  }
+  const symbolSrc = theme.symbol?.[mode];
   return (
-    <img
-      src={src}
-      alt={alt ?? `${theme.label} logo`}
-      className={cn("h-8 w-auto", className)}
-      {...props}
-    />
+    <div className={cn("flex items-center gap-2.5 text-foreground", className)} {...props}>
+      {symbolSrc ? (
+        // eslint-disable-next-line @next/next/no-img-element -- data-URI brand asset
+        <img src={symbolSrc} alt="" aria-hidden className="h-8 w-auto" />
+      ) : null}
+      {symbolOnly ? null : (
+        <span className="font-serif font-semibold text-2xl leading-none tracking-tight">
+          {theme.label}
+        </span>
+      )}
+    </div>
   );
 }
 
 /** The active brand's compact symbol/glyph for the current mode. */
-export function Symbol({ className, alt, ...props }: LogoProps) {
+export function Symbol({ className, alt, ...props }: SymbolProps) {
   const { theme, resolvedMode } = useMindTheme();
   const src = theme.symbol?.[pickMode(resolvedMode)];
   if (!src) return null;
