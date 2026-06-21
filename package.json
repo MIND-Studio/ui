@@ -30,6 +30,10 @@
       "types": "./dist/blocks/index.d.ts",
       "import": "./dist/blocks/index.js"
     },
+    "./brand": {
+      "types": "./dist/brand.d.ts",
+      "import": "./dist/brand.js"
+    },
     "./styles.css": "./dist/styles.css"
   },
   "scripts": {
