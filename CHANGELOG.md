@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0](https://github.com/MIND-Studio/ui/compare/v0.6.0...v0.7.0) (2026-06-21)
+
+
+### Features
+
+* **brand:** per-app wordmark via Logo label prop ([74b4030](https://github.com/MIND-Studio/ui/commit/74b4030d0e48d99fdfcff2769fb9fc26f1b75ebe))
+* **brand:** support per-app wordmark via Logo label prop ([fa55f0d](https://github.com/MIND-Studio/ui/commit/fa55f0df54db313509df1d0d18f44251f9e0842a)), closes [#29](https://github.com/MIND-Studio/ui/issues/29)
+
 ## [0.6.0](https://github.com/MIND-Studio/ui/compare/v0.5.0...v0.6.0) (2026-06-21)
 
 
