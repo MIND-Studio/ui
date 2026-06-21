@@ -10,9 +10,18 @@ primitives — is retinted per brand; the semantic aliases (shadcn's exact names
 `--background`, `--primary`) reference it, so vendored components stay pristine.
 
 Reach for the **surface** palette for page chrome (backgrounds, cards, borders, inputs,
-rings), the **brand & status** palette for primary actions and destructive states, and the
-self-contained **sidebar** palette when the app sidebar needs to theme independently of page
-surfaces. Every chip resolves a live CSS variable — **switch brand and mode in the toolbar**
-to see them all update at once.
+rings), the **brand & status** palette for primary actions and destructive states, the
+**semantic state** palette (`success` / `warning` / `error` / `info`) for feedback — so apps
+stop hand-picking `emerald-500` / `amber-500` — and the self-contained **sidebar** palette when
+the app sidebar needs to theme independently of page surfaces. Every chip resolves a live CSS
+variable — **switch brand and mode in the toolbar** to see them all update at once.
+
+Use the state tokens via their utilities (`text-success`, `bg-warning/10`,
+`bg-error text-error-foreground`). They follow the same convention as `primary` — a brighter
+fill with dark on-color in dark mode, a mid-dark fill with light on-color in light mode — so
+`text-*` reads on the page while the filled `bg-* / *-foreground` pair clears WCAG AA (the
+[contrast gate](?path=/docs/foundations-colors--docs) enforces all four pairs). `error` is the
+semantic alias of shadcn's `destructive` red; **charts** stay a separate categorical scale for
+data only, never state.
 
 <Canvas of={ColorsStories.Colors} />
