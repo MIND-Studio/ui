@@ -35,6 +35,13 @@ const BRAND_PAIRS = [
   ["destructive", "destructive-foreground"],
 ] as const;
 
+const STATE_PAIRS = [
+  ["success", "success-foreground"],
+  ["warning", "warning-foreground"],
+  ["error", "error-foreground"],
+  ["info", "info-foreground"],
+] as const;
+
 const CHART_TOKENS = ["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"] as const;
 
 const SIDEBAR_PAIRS = [
@@ -50,6 +57,7 @@ const GROUPED = new Set<string>([
   ...SURFACE_PAIRS.flat(),
   ...SURFACE_LINES,
   ...BRAND_PAIRS.flat(),
+  ...STATE_PAIRS.flat(),
   ...CHART_TOKENS,
   ...SIDEBAR_PAIRS.flat(),
   ...SIDEBAR_LINES,
@@ -105,7 +113,18 @@ export const Colors: Story = {
         </div>
       </Group>
 
-      <Group title="Charts" hint="The five categorical data-viz colors.">
+      <Group
+        title="Semantic state"
+        hint="Success, warning, error, and info — each with its on-color. Use these (e.g. text-success, bg-warning/10) for state, not raw palette colors. Like primary, they brighten in dark mode with dark on-color; error is the semantic alias of destructive."
+      >
+        <div className={swatchGrid}>
+          {STATE_PAIRS.map(([bg, fg]) => (
+            <Pair key={bg} bg={bg} fg={fg} />
+          ))}
+        </div>
+      </Group>
+
+      <Group title="Charts" hint="The five categorical data-viz colors — for data only, not state or brand surfaces.">
         <div className={swatchGrid}>
           {CHART_TOKENS.map((token) => (
             <Swatch key={token} varName={`--${token}`} />

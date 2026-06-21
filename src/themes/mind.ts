@@ -30,6 +30,17 @@ export const mindLight: CompleteAliasMap = {
   "accent-foreground": "var(--mind-gray-900)",
   destructive: "oklch(0.505 0.19 27.3)",
   "destructive-foreground": "var(--mind-gray-50)",
+  // Semantic state colors (light mode): mid-dark fills carry white text, like
+  // destructive. `text-success`/`text-warning` read as the darker tone on a
+  // light page; `bg-success text-success-foreground` is the filled pairing.
+  success: "oklch(0.5 0.12 162)",
+  "success-foreground": "var(--mind-gray-50)",
+  warning: "oklch(0.5 0.13 70)",
+  "warning-foreground": "var(--mind-gray-50)",
+  error: "oklch(0.505 0.19 27.3)",
+  "error-foreground": "var(--mind-gray-50)",
+  info: "oklch(0.5 0.15 250)",
+  "info-foreground": "var(--mind-gray-50)",
   border: "var(--mind-gray-200)",
   input: "var(--mind-gray-200)",
   ring: "oklch(0.52 0.105 172)",
@@ -65,6 +76,17 @@ export const mindDark: CompleteAliasMap = {
   "accent-foreground": "var(--mind-gray-50)",
   destructive: "oklch(0.5 0.19 27.3)",
   "destructive-foreground": "var(--mind-gray-50)",
+  // Semantic state colors (dark mode): brighter fills with dark text, like
+  // primary — so `text-success`/`text-warning` stay legible on the deep navy
+  // surface while `bg-* text-*-foreground` filled pairs keep AA.
+  success: "oklch(0.72 0.142 162)",
+  "success-foreground": "var(--mind-gray-950)",
+  warning: "oklch(0.8 0.15 78)",
+  "warning-foreground": "var(--mind-gray-950)",
+  error: "oklch(0.68 0.19 25)",
+  "error-foreground": "var(--mind-gray-950)",
+  info: "oklch(0.7 0.15 250)",
+  "info-foreground": "var(--mind-gray-950)",
   border: "oklch(1 0 0 / 0.1)",
   input: "oklch(1 0 0 / 0.15)",
   ring: "oklch(0.72 0.142 165)",
