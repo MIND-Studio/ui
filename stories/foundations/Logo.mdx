@@ -41,6 +41,23 @@ import { Logo, Symbol } from "@mind-studio/ui";
 
 <Canvas of={LogoStories.Lockups} />
 
+## 🏷️ Per-app wordmark
+
+Every Mind product **shares the one weave mark** but signs itself with **its own
+name** — the mark + "Drive", "Slides", "Chat", and so on — set in the same Fraunces
+serif, weight, and size as the master wordmark. Pass the product name via `label`;
+it overrides **only the text**, never the artwork. With no `label`, the lockup falls
+back to the active brand's name ("Mind"), so the host shell and landing stay
+unchanged.
+
+```tsx
+<Logo label="Drive" />   {/* mark + "Drive" in the brand serif */}
+<Logo label="Slides" />  {/* mark + "Slides" */}
+<Logo />                 {/* mark + "Mind" (default) */}
+```
+
+<Canvas of={LogoStories.ProductLockups} />
+
 ## 📐 Construction
 
 The mark is drawn on a circular grid — every node shares one unit radius and a

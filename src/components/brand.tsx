@@ -22,6 +22,13 @@ export type SymbolProps = Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src" 
 export type LogoProps = React.HTMLAttributes<HTMLDivElement> & {
   /** Render only the symbol, dropping the wordmark text. */
   symbolOnly?: boolean;
+  /**
+   * Wordmark text. Defaults to the active theme's `label` ("Mind"). Pass the
+   * product name (e.g. `"Drive"`) so an app's lockup reads as the shared mark +
+   * its own name, set in the same brand serif. Overrides only the text — the
+   * symbol/mark still comes from the active theme.
+   */
+  label?: string;
 };
 
 /**
@@ -32,15 +39,16 @@ export type LogoProps = React.HTMLAttributes<HTMLDivElement> & {
  * fully bespoke wordmark image via its `logo` asset; when present that image is
  * used as-is instead.
  */
-export function Logo({ className, symbolOnly, ...props }: LogoProps) {
+export function Logo({ className, symbolOnly, label, ...props }: LogoProps) {
   const { theme, resolvedMode } = useMindTheme();
   const mode = pickMode(resolvedMode);
+  const wordmark = label ?? theme.label;
   const custom = theme.logo?.[mode];
   if (custom) {
     return (
       <div className={cn("flex items-center", className)} {...props}>
         {/* eslint-disable-next-line @next/next/no-img-element -- data-URI brand asset */}
-        <img src={custom} alt={`${theme.label} logo`} className="h-8 w-auto" />
+        <img src={custom} alt={`${wordmark} logo`} className="h-8 w-auto" />
       </div>
     );
   }
@@ -53,7 +61,7 @@ export function Logo({ className, symbolOnly, ...props }: LogoProps) {
       ) : null}
       {symbolOnly ? null : (
         <span className="font-serif font-semibold text-2xl leading-none tracking-tight">
-          {theme.label}
+          {wordmark}
         </span>
       )}
     </div>

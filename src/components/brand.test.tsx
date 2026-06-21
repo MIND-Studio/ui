@@ -72,6 +72,30 @@ describe("brand components", () => {
     await expectNoAxeViolations(container);
   });
 
+  it("overrides only the wordmark text with label, keeping the theme symbol", async () => {
+    const { container } = render(
+      <ThemeProvider theme={mind} forcedTheme="light" enableSystem={false}>
+        <Logo label="Drive" />
+      </ThemeProvider>,
+    );
+    // The product name renders in place of the default "Mind" wordmark...
+    expect(screen.getByText("Drive")).toBeInTheDocument();
+    expect(screen.queryByText("Mind")).not.toBeInTheDocument();
+    // ...in the same serif lockup, and the shared mark is still painted.
+    expect(screen.getByText("Drive")).toHaveClass("font-serif");
+    expect(container.querySelector("img")).toBeInTheDocument();
+    await expectNoAxeViolations(container);
+  });
+
+  it("defaults the wordmark to the theme label when no label is given", () => {
+    render(
+      <ThemeProvider theme={mind} forcedTheme="light" enableSystem={false}>
+        <Logo />
+      </ThemeProvider>,
+    );
+    expect(screen.getByText("Mind")).toBeInTheDocument();
+  });
+
   it("drops the wordmark with symbolOnly", () => {
     render(
       <ThemeProvider theme={mind} forcedTheme="light" enableSystem={false}>
