@@ -46,7 +46,7 @@ function Caption({ children }: { children: React.ReactNode }) {
  * renders in the real typeface rather than a baked image. `ink` fixes the text
  * colour for the panel it sits on.
  */
-function Wordmark({ ink, size = 40 }: { ink: string; size?: number }) {
+function Wordmark({ ink, size = 40, text = "Mind" }: { ink: string; size?: number; text?: string }) {
   return (
     <span className="inline-flex items-center" style={{ gap: size * 0.28 }}>
       <img src={MARK} alt="" aria-hidden style={{ height: size, width: "auto" }} />
@@ -54,7 +54,7 @@ function Wordmark({ ink, size = 40 }: { ink: string; size?: number }) {
         className="font-serif font-semibold leading-none tracking-tight"
         style={{ fontSize: size * 0.82, color: ink }}
       >
-        Mind
+        {text}
       </span>
     </span>
   );
@@ -103,6 +103,32 @@ export const Lockups: Story = {
       </Panel>
       <Panel bg={DARK_BG} dark label="Symbol (mark only) · dark background">
         <img src={MARK} alt="Mind symbol" className="h-20 w-auto" />
+      </Panel>
+    </div>
+  ),
+};
+
+/* ------------------------------------------------------- product wordmarks */
+
+const PRODUCTS = ["Mind", "Drive", "Slides", "Chat", "Calendar", "Videos"] as const;
+
+export const ProductLockups: Story = {
+  tags: ["!dev"],
+  render: () => (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <Panel bg={LIGHT_BG} label="Per-app wordmark · light background">
+        <div className="flex flex-col items-start gap-4">
+          {PRODUCTS.map((p) => (
+            <Wordmark key={p} ink="#18181b" size={36} text={p} />
+          ))}
+        </div>
+      </Panel>
+      <Panel bg={DARK_BG} dark label="Per-app wordmark · dark background">
+        <div className="flex flex-col items-start gap-4">
+          {PRODUCTS.map((p) => (
+            <Wordmark key={p} ink="#fafafa" size={36} text={p} />
+          ))}
+        </div>
       </Panel>
     </div>
   ),
