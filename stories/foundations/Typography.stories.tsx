@@ -20,9 +20,9 @@ type Story = StoryObj<typeof meta>;
 /* ------------------------------------------------------------------ specimens */
 
 const FONTS = [
-  { varName: "--font-sans", label: "Sans — UI & body" },
-  { varName: "--font-serif", label: "Serif — editorial" },
-  { varName: "--font-mono", label: "Mono — code & data" },
+  { varName: "--font-serif", label: "Serif — headlines (h1–h3)" },
+  { varName: "--font-sans", label: "Sans — body & UI (default)" },
+  { varName: "--font-mono", label: "Mono — code & technical labels" },
 ] as const;
 
 // Hidden from the sidebar (!dev): the visible page is Typography.mdx, which
@@ -57,106 +57,121 @@ export const Typography: Story = {
 
 /* ---------------------------------------------------------------------- scale */
 
-// A single line set at the steps a brand actually composes with, sans by
-// default. Switching brand re-renders the whole ladder in that brand's stack.
+// The scale across the steps a brand composes with. Display/Title/Heading map to
+// h1–h3 and carry the serif; everything from Subheading down is sans — the same
+// split the global base layer applies to real <h1>–<h6>. Switching brand in the
+// toolbar re-renders the whole ladder in that brand's stacks.
 const SCALE = [
-  { util: "text-5xl", role: "Display", weight: "font-semibold tracking-tight" },
-  { util: "text-3xl", role: "Title", weight: "font-semibold tracking-tight" },
-  { util: "text-2xl", role: "Heading", weight: "font-semibold" },
-  { util: "text-xl", role: "Subheading", weight: "font-medium" },
-  { util: "text-base", role: "Body", weight: "font-normal" },
-  { util: "text-sm", role: "Small", weight: "font-normal" },
-  { util: "text-xs", role: "Caption", weight: "font-normal" },
+  { util: "text-5xl", role: "Display", tag: "h1", face: "serif", weight: "font-semibold tracking-tight" },
+  { util: "text-3xl", role: "Title", tag: "h2", face: "serif", weight: "font-semibold tracking-tight" },
+  { util: "text-2xl", role: "Heading", tag: "h3", face: "serif", weight: "font-semibold" },
+  { util: "text-xl", role: "Subheading", tag: "h4", face: "sans", weight: "font-medium" },
+  { util: "text-base", role: "Body", tag: "p", face: "sans", weight: "font-normal" },
+  { util: "text-sm", role: "Small", tag: "p", face: "sans", weight: "font-normal" },
+  { util: "text-xs", role: "Caption", tag: "p", face: "sans", weight: "font-normal" },
 ] as const;
 
 export const Scale: Story = {
   tags: ["!dev"],
   render: () => (
-    <section className="space-y-6" style={{ fontFamily: "var(--font-sans)" }}>
+    <section className="space-y-6">
       {SCALE.map((s) => (
         <div
           key={s.util}
           className="flex flex-col gap-1 border-border border-b pb-4 last:border-b-0 sm:flex-row sm:items-baseline sm:gap-6"
         >
-          <div className="flex w-40 shrink-0 items-baseline gap-2">
+          <div className="flex w-52 shrink-0 items-baseline gap-2">
             <span className="text-foreground text-sm">{s.role}</span>
-            <code className="text-muted-foreground text-xs">{s.util}</code>
+            <code className="text-muted-foreground text-xs">{s.tag}</code>
+            <span className="text-muted-foreground text-xs">· {s.face}</span>
           </div>
-          <p className={`${s.util} ${s.weight} text-foreground`}>Design with intention</p>
+          <p
+            className={`${s.util} ${s.weight} text-foreground`}
+            style={{ fontFamily: `var(--font-${s.face})` }}
+          >
+            Design with intention
+          </p>
         </div>
       ))}
     </section>
   ),
 };
 
-/* ------------------------------------------------------------------ editorial */
+/* --------------------------------------------------------------- composition */
 
-// Serif in its element: a long-form article — headline, lead, body, a pull
-// quote, a list, an inline term — so you can read the stack at real lengths.
-export const Editorial: Story = {
+// The three roles working together on one page: serif headlines (h1–h3) carry
+// the voice, the sans body does the reading, and a mono eyebrow / inline token
+// marks the technical bits. This is the system as it actually composes.
+export const Composition: Story = {
   tags: ["!dev"],
   render: () => (
-    <article
-      className="max-w-prose space-y-6 text-foreground"
-      style={{ fontFamily: "var(--font-serif)" }}
-    >
+    <article className="max-w-prose space-y-6 text-foreground">
       <header className="space-y-3">
-        <p className="font-medium text-muted-foreground text-sm uppercase tracking-wide">
+        <p
+          className="font-medium text-muted-foreground text-xs uppercase tracking-widest"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
           On craft
         </p>
-        <h2 className="text-balance font-semibold text-4xl leading-tight tracking-tight">
-          A typeface is an argument about how a sentence should feel
+        <h2
+          className="text-balance font-semibold text-4xl leading-tight tracking-tight"
+          style={{ fontFamily: "var(--font-serif)" }}
+        >
+          The headline wears the serif; the paragraph wears the sans
         </h2>
         <p className="text-pretty text-muted-foreground text-xl leading-relaxed">
           Before a single word is read, the shapes of the letters have already made a promise —
-          of warmth or precision, of authority or ease. Good editorial type keeps that promise
-          paragraph after paragraph.
+          of warmth or precision, of authority or ease. Mind gives that promise to the
+          <strong> headlines</strong>, set in the brand serif, and lets the sans do the steady
+          work of the body.
         </p>
       </header>
 
       <p className="text-pretty text-lg leading-relaxed">
-        Set a serif at a generous size and give it room to breathe, and something quiet happens:
-        the eye settles. The bracketed serifs guide the line, the modulated strokes mark rhythm,
-        and a long passage stops feeling like a wall of glyphs and starts feeling like a voice.
-        This is the work the <em>editorial</em> stack is tuned for — the considered essay, the
-        story that wants to be lingered over rather than scanned.
+        Set Fraunces at a generous size and give it room to breathe, and something quiet happens:
+        the eye settles, the page finds a voice. Drop into running copy and the sans takes over —
+        open, even, and legible at the small sizes and tight line-heights most product text lives
+        at. Two faces, one rhythm.
       </p>
 
       <blockquote className="border-primary border-l-2 pl-5 text-pretty text-xl italic leading-relaxed">
-        “Typography is what language looks like.” The reader never sees the grid, only the
+        “Typography is what language looks like.” The reader never sees the system, only the
         feeling it produces.
       </blockquote>
 
-      <h3 className="font-semibold text-2xl tracking-tight">What the stack is asked to carry</h3>
+      <h3
+        className="font-semibold text-2xl tracking-tight"
+        style={{ fontFamily: "var(--font-serif)" }}
+      >
+        Three roles, one composition
+      </h3>
 
       <p className="text-pretty text-lg leading-relaxed">
-        A single editorial stack has to hold up under everything a writer throws at it. In
-        practice that means it stays readable across:
+        Each face is asked to do only what it does best, and the base layer applies the split for
+        you — real <code className="text-base">h1</code>–<code className="text-base">h3</code> come
+        out serif, everything else stays sans:
       </p>
 
       <ul className="list-disc space-y-2 pl-6 text-lg leading-relaxed marker:text-muted-foreground">
-        <li>Running body copy — the long paragraphs that make up most of a piece.</li>
         <li>
-          Emphasis that has to feel deliberate, whether <em>italic</em> or{" "}
-          <strong>bold</strong>, without breaking the line's colour.
+          <strong>Serif</strong> for display headings (<code className="text-base">h1</code>–
+          <code className="text-base">h3</code>) — the brand voice.
         </li>
-        <li>Pulled quotes and asides that step out of the column to take a breath.</li>
+        <li>
+          <strong>Sans</strong> for body copy, UI chrome, and small structural headings (
+          <code className="text-base">h4</code>–<code className="text-base">h6</code>).
+        </li>
+        <li>
+          <strong>Mono</strong> for code, keyboard keys (<kbd>⌘K</kbd>), tokens, and technical
+          eyebrows — never for running prose.
+        </li>
       </ul>
 
       <p className="text-pretty text-lg leading-relaxed">
-        And it does this while sharing a page with its siblings. The same theme that picks this
-        serif also names a sans for the interface chrome around the article and a mono for any
-        code it quotes — three voices, one composition.
+        Reference the role, not the face — reach for{" "}
+        <code className="text-base">var(--font-serif)</code> rather than a hard-coded family — and
+        a brand swap re-voices the whole page at once.
       </p>
-
-      <ol className="list-decimal space-y-2 pl-6 text-lg leading-relaxed marker:text-muted-foreground">
-        <li>Choose the stack on the theme — set the editorial role to a serif you trust.</li>
-        <li>
-          Reference it through <code className="font-mono text-base">var(--font-serif)</code>,
-          never a hard-coded family.
-        </li>
-        <li>Let everything else inherit, so a brand swap re-voices the whole page at once.</li>
-      </ol>
     </article>
   ),
 };
@@ -231,9 +246,9 @@ const TONE: Record<string, string> = {
 };
 
 const TABLE = [
-  { token: "--font-sans", role: "UI & body", scale: "0.875–1rem" },
-  { token: "--font-serif", role: "Editorial", scale: "1.125–2.25rem" },
-  { token: "--font-mono", role: "Code & data", scale: "0.8125–0.875rem" },
+  { token: "--font-serif", role: "Headlines · h1–h3", scale: "1.5–3rem" },
+  { token: "--font-sans", role: "Body, UI · h4–h6", scale: "0.75–1.25rem" },
+  { token: "--font-mono", role: "Code & technical labels", scale: "0.75–0.875rem" },
 ] as const;
 
 export const Code: Story = {
